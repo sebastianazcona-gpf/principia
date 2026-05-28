@@ -1,1 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440"><image width="1200" height="440" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABLAAAAG4CAYAAABVSh4FAAEAAElEQVR4nOzdWYxmx3kmwO23mNf99T+78AuAAIzmSJnMPNyzpCbTi6nvyqp0aVigROac08bH4+Pj4+Pj4+Ojtfp6cuzFnoBB7OvnuZ7W5ZeT1pNna/h4vtALsPW2T9NuPWn1+XiWsN/9jBBA/ts1jVm61+8f+/O+FmDra9PNJN7vq+fJCZFXa7Cttz0s7GVwn0+9mC62aj33ch/nTR1tNNXjeX/Z67ur2oHW0zqdGhFzty3Pjppzo3XXddihf07Vu7G1fy+Deulv3sUd3rVG/vNtaN1pHx3X06qeqZrNDKmYdVp7qg23zM/mHb5c1pWFUVobxfVB7vUbrTvp0geNnU2q2aZt0uXTUynObuTVMVdvnc5pGFfaX1diqmtnM5TrV6WlrHbZyPN9WFapyl3pWqXa/2fkO40bqR9Wj5IX42KZdFl6dTw7/t20nTezHNfX66J7IPr19O/Y4PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8Pj+8H+wvwufn9m7h8QwAAAABJRU5ErkJggg=="/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" role="img" aria-label="Grupo Principia Futuro">
+  <defs>
+    <linearGradient id="gpfGrad" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#00a36f"/>
+      <stop offset="1" stop-color="#0086bd"/>
+    </linearGradient>
+  </defs>
+  <circle cx="152" cy="160" r="132" fill="url(#gpfGrad)"/>
+  <path d="M81 115v-26c0-9 7-16 16-16h26" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M223 115v-26c0-9-7-16-16-16h-26" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M81 205v26c0 9 7 16 16 16h26" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M223 205v26c0 9-7 16-16 16h-26" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M66 160c34-56 138-56 172 0-34 56-138 56-172 0z" fill="#fff"/>
+  <circle cx="152" cy="160" r="29" fill="url(#gpfGrad)"/>
+  <path d="M84 183h136c-31 33-105 33-136 0z" fill="url(#gpfGrad)"/>
+  <circle cx="236" cy="72" r="42" fill="#fff" stroke="#0086bd" stroke-width="10"/>
+  <path d="M208 62c24-20 57-19 80 2M203 82c25-7 57-4 85 11M226 41c-15 22-28 45-33 70M252 38c5 20 7 43 3 73M276 48c-14 18-36 37-65 53" fill="none" stroke="#3b176d" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="218" cy="77" r="5" fill="#3b176d"/>
+  <circle cx="245" cy="65" r="8" fill="#3b176d"/>
+  <circle cx="275" cy="78" r="10" fill="#3b176d"/>
+  <circle cx="253" cy="104" r="10" fill="#3b176d"/>
+  <path d="M225 113l-9 18" stroke="#fff" stroke-width="11" stroke-linecap="round"/>
+  <path d="M226 116l-7 18" stroke="#0086bd" stroke-width="7" stroke-linecap="round"/>
+  <text x="338" y="123" fill="#102449" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="300" letter-spacing="-2">GRUPO</text>
+  <text x="337" y="209" fill="#102449" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="83" font-weight="900" letter-spacing="-3">PRINCIPIA</text>
+  <text x="337" y="287" fill="#102449" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="78" font-weight="900" letter-spacing="-3">FUTURO</text>
+</svg>
