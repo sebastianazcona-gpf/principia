@@ -1,1212 +1,269 @@
-:root {
-      --azul: #142544;
-      --turquesa: #0e8ca5;
-      --gris: #384247;
-      --gris-claro: #f3f6f8;
-      --gris-medio: #dfe6eb;
-      --blanco: #ffffff;
-      --sombra: 0 24px 60px rgba(20, 37, 68, 0.14);
-      --sombra-fuerte: 0 34px 76px rgba(20, 37, 68, 0.22);
-      --radio: 28px;
-      --ease: cubic-bezier(.2,.8,.2,1);
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: Helvetica, Arial, sans-serif;
-      color: var(--gris);
-      background: var(--gris-claro);
-      line-height: 1.55;
-      overflow-x: hidden;
-    }
-
-    body::selection {
-      background: rgba(14, 140, 165, 0.22);
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-
-    .ambient {
-      position: fixed;
-      z-index: 0;
-      pointer-events: none;
-      border-radius: 999px;
-      filter: blur(2px);
-      opacity: .22;
-      transition: transform .2s linear;
-    }
-
-    .ambient-one {
-      width: 360px;
-      height: 360px;
-      top: 8%;
-      left: -120px;
-      background: radial-gradient(circle, rgba(14,140,165,.36), transparent 68%);
-    }
-
-    .ambient-two {
-      width: 460px;
-      height: 460px;
-      right: -180px;
-      top: 38%;
-      background: radial-gradient(circle, rgba(20,37,68,.26), transparent 68%);
-    }
-
-    .ambient-three {
-      width: 300px;
-      height: 300px;
-      left: 42%;
-      bottom: -120px;
-      background: radial-gradient(circle, rgba(14,140,165,.22), transparent 70%);
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 18px;
-      color: var(--turquesa);
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-size: 0.78rem;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 34px;
-      height: 2px;
-      background: var(--turquesa);
-      display: inline-block;
-      transform-origin: left;
-      animation: linePulse 4s var(--ease) infinite;
-    }
-
-    @keyframes linePulse {
-      0%, 100% { transform: scaleX(1); opacity: 1; }
-      50% { transform: scaleX(.55); opacity: .55; }
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(20, 37, 68, 0.08);
-    }
-
-    .nav {
-      height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 28px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--azul);
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      font-size: 1.65rem;
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--azul) 0 48%, var(--turquesa) 48% 100%);
-      position: relative;
-      box-shadow: 0 12px 26px rgba(14, 140, 165, 0.22);
-      transition: transform .28s var(--ease), box-shadow .28s var(--ease);
-    }
-
-    .brand:hover .brand-mark {
-      transform: rotate(-6deg) scale(1.05);
-      box-shadow: 0 18px 34px rgba(14, 140, 165, 0.28);
-    }
-
-    .brand-mark::after {
-      content: "P";
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-size: 1.55rem;
-      font-weight: 900;
-    }
-
-    .brand small {
-      display: block;
-      color: var(--turquesa);
-      font-weight: 600;
-      letter-spacing: 0.35em;
-      text-transform: lowercase;
-      font-size: 0.62rem;
-      margin-top: -6px;
-    }
-
-    .menu {
-      display: flex;
-      gap: 26px;
-      align-items: center;
-      color: var(--azul);
-      font-size: 0.92rem;
-      font-weight: 800;
-    }
-
-    .menu a:not(.btn) {
-      opacity: 0.82;
-      position: relative;
-      padding: 8px 0;
-      transition: color .2s ease, opacity .2s ease;
-    }
-
-    .menu a:not(.btn)::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 2px;
-      width: 100%;
-      height: 2px;
-      background: var(--turquesa);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform .25s var(--ease);
-    }
-
-    .menu a:not(.btn):hover {
-      opacity: 1;
-      color: var(--turquesa);
-    }
-
-    .menu a:not(.btn):hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-
-    .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 48px;
-      padding: 0 22px;
-      border-radius: 999px;
-      font-weight: 900;
-      border: 1px solid transparent;
-      transition: transform .22s var(--ease), background .22s var(--ease), border-color .22s var(--ease), box-shadow .22s var(--ease);
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: var(--turquesa);
-      color: var(--blanco);
-      box-shadow: 0 18px 34px rgba(14, 140, 165, 0.28);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      background: #0b7d94;
-      box-shadow: 0 24px 46px rgba(14, 140, 165, 0.34);
-    }
-
-    .btn-secondary {
-      color: var(--azul);
-      background: var(--blanco);
-      border-color: rgba(20, 37, 68, 0.12);
-    }
-
-    .btn-secondary:hover {
-      transform: translateY(-3px);
-      border-color: rgba(14, 140, 165, 0.34);
-      box-shadow: 0 16px 34px rgba(20, 37, 68, 0.1);
-    }
-
-    .btn-card {
-      align-self: flex-start;
-      margin-top: 24px;
-      color: var(--azul);
-      background: rgba(255, 255, 255, 0.92);
-      border-color: rgba(20,37,68,.1);
-    }
-
-    .btn-card:hover {
-      color: var(--blanco);
-      background: var(--turquesa);
-      transform: translateY(-3px);
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 92% 12%, rgba(14, 140, 165, 0.16), transparent 28%),
-        linear-gradient(135deg, #ffffff 0%, #eef5f7 100%);
-      padding: 92px 0 72px;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 22%;
-      height: 8px;
-      background: var(--turquesa);
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto -120px -160px auto;
-      width: 520px;
-      height: 520px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(14,140,165,.13), transparent 60%);
-      animation: floatSlow 13s ease-in-out infinite;
-    }
-
-    @keyframes floatSlow {
-      0%, 100% { transform: translate3d(0,0,0); }
-      50% { transform: translate3d(-22px,-26px,0); }
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.04fr 0.96fr;
-      gap: 52px;
-      align-items: center;
-    }
-
-    .hero h1 {
-      margin: 0 0 22px;
-      color: var(--azul);
-      font-size: clamp(2.45rem, 5.3vw, 4.95rem);
-      line-height: 0.98;
-      letter-spacing: -0.064em;
-      max-width: 900px;
-    }
-
-    .hero h1 span { color: var(--turquesa); }
-
-    .lead {
-      max-width: 670px;
-      font-size: 1.16rem;
-      color: #4b5a62;
-      margin: 0 0 32px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
-      margin-bottom: 34px;
-    }
-
-    .trust-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      max-width: 700px;
-    }
-
-    .trust-item {
-      background: rgba(255,255,255,.9);
-      border: 1px solid rgba(20, 37, 68, 0.08);
-      border-left: 4px solid var(--turquesa);
-      border-radius: 16px;
-      padding: 16px 15px;
-      box-shadow: 0 12px 26px rgba(20, 37, 68, 0.06);
-      transition: transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s var(--ease);
-    }
-
-    .trust-item:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 42px rgba(20, 37, 68, 0.11);
-      border-color: rgba(14,140,165,.24);
-    }
-
-    .trust-item strong {
-      display: block;
-      color: var(--azul);
-      font-size: 0.96rem;
-      margin-bottom: 3px;
-    }
-
-    .trust-item span { font-size: 0.84rem; color: #637078; }
-
-    .hero-card {
-      position: relative;
-      background: var(--azul);
-      color: #fff;
-      border-radius: 36px;
-      padding: 34px;
-      box-shadow: var(--sombra);
-      min-height: 540px;
-      overflow: hidden;
-      transition: transform .28s var(--ease), box-shadow .28s var(--ease);
-      will-change: transform;
-    }
-
-    .hero-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--sombra-fuerte);
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      right: -90px;
-      top: -90px;
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      border: 42px solid rgba(14, 140, 165, 0.22);
-      animation: rotateHalo 18s linear infinite;
-    }
-
-    @keyframes rotateHalo {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .hero-card::after {
-      content: "";
-      position: absolute;
-      right: 26px;
-      bottom: 26px;
-      width: 150px;
-      height: 150px;
-      border-radius: 42px;
-      background: linear-gradient(135deg, rgba(14, 140, 165, 0.9), rgba(255, 255, 255, 0.06));
-      transform: rotate(8deg);
-      animation: cardBlock 7s ease-in-out infinite;
-    }
-
-    @keyframes cardBlock {
-      0%, 100% { transform: rotate(8deg) translateY(0); }
-      50% { transform: rotate(4deg) translateY(-12px); }
-    }
-
-    .card-content { position: relative; z-index: 2; }
-
-    .hero-card .label {
-      display: inline-block;
-      color: #bfeff6;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-size: 0.72rem;
-      font-weight: 900;
-      margin-bottom: 24px;
-    }
-
-    .metric-main {
-      margin: 0 0 28px;
-      font-size: clamp(2rem, 4.6vw, 3.92rem);
-      line-height: 0.98;
-      letter-spacing: -0.06em;
-      font-weight: 900;
-    }
-
-    .mini-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 34px;
-    }
-
-    .mini-card {
-      min-height: 132px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 22px;
-      padding: 22px;
-      transition: transform .22s var(--ease), background .22s var(--ease), border-color .22s var(--ease);
-    }
-
-    .mini-card:hover {
-      transform: translateY(-5px);
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255,255,255,.24);
-    }
-
-    .mini-card strong {
-      display: block;
-      font-size: 1.55rem;
-      margin-bottom: 8px;
-      color: #fff;
-    }
-
-    .mini-card span { color: rgba(255, 255, 255, 0.78); font-size: 0.9rem; }
-
-    section {
-      padding: 86px 0;
-      position: relative;
-    }
-
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 32px;
-      margin-bottom: 42px;
-    }
-
-    .section-head h2 {
-      color: var(--azul);
-      font-size: clamp(2rem, 4vw, 3.45rem);
-      line-height: 1;
-      letter-spacing: -0.055em;
-      margin: 0;
-      max-width: 800px;
-    }
-
-    .section-head p {
-      margin: 0;
-      max-width: 470px;
-      color: #5d6970;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 34px;
-      align-items: stretch;
-    }
-
-    .panel {
-      background: #fff;
-      border-radius: var(--radio);
-      padding: 34px;
-      border: 1px solid rgba(20, 37, 68, 0.08);
-      box-shadow: 0 18px 44px rgba(20, 37, 68, 0.07);
-      transition: transform .24s var(--ease), box-shadow .24s var(--ease);
-    }
-
-    .panel:hover,
-    .value-card:hover,
-    .solution-card:hover,
-    .b2b-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--sombra);
-    }
-
-    .panel-dark {
-      background: var(--azul);
-      color: #fff;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .panel-dark::after {
-      content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      right: -70px;
-      bottom: -70px;
-      border-radius: 50%;
-      background: rgba(14,140,165,.22);
-    }
-
-    .panel h3 {
-      margin: 0 0 14px;
-      color: var(--azul);
-      font-size: 1.55rem;
-      letter-spacing: -0.035em;
-      position: relative;
-      z-index: 1;
-    }
-
-    .panel-dark h3 { color: #fff; }
-    .panel p { margin: 0; color: #5f6c73; position: relative; z-index: 1; }
-    .panel-dark p { color: rgba(255, 255, 255, 0.78); }
-
-    .values {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    .value-card {
-      padding: 24px;
-      border-radius: 22px;
-      background: #fff;
-      border: 1px solid rgba(20, 37, 68, 0.08);
-      transition: transform .24s var(--ease), box-shadow .24s var(--ease), border-color .24s var(--ease);
-    }
-
-    .value-card:hover { border-color: rgba(14,140,165,.22); }
-
-    .icon {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background: rgba(14, 140, 165, 0.1);
-      color: var(--turquesa);
-      font-weight: 900;
-      margin-bottom: 16px;
-      transition: transform .25s var(--ease), background .25s var(--ease);
-    }
-
-    .value-card:hover .icon,
-    .solution-card:hover .icon {
-      transform: rotate(-7deg) scale(1.06);
-      background: rgba(14, 140, 165, 0.16);
-    }
-
-    .value-card h3 {
-      color: var(--azul);
-      margin: 0 0 8px;
-      font-size: 1.08rem;
-    }
-
-    .value-card p {
-      margin: 0;
-      font-size: 0.94rem;
-      color: #637078;
-    }
-
-    .solutions {
-      background: #fff;
-      overflow: hidden;
-    }
-
-    .solutions::before {
-      content: "";
-      position: absolute;
-      width: 420px;
-      height: 420px;
-      left: -220px;
-      top: 120px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(14,140,165,.11), transparent 70%);
-      animation: floatSlow 11s ease-in-out infinite;
-    }
-
-    .solution-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .solution-card {
-      position: relative;
-      min-height: 350px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 30px;
-      border-radius: 30px;
-      overflow: hidden;
-      border: 1px solid rgba(20, 37, 68, 0.09);
-      background: linear-gradient(180deg, #ffffff 0%, #f3f8fa 100%);
-      transition: transform .24s var(--ease), box-shadow .24s var(--ease), border-color .24s var(--ease);
-    }
-
-    .solution-card.featured {
-      background: var(--azul);
-      color: #fff;
-    }
-
-    .solution-card::after {
-      content: "";
-      position: absolute;
-      right: -42px;
-      bottom: -42px;
-      width: 150px;
-      height: 150px;
-      border-radius: 38px;
-      background: rgba(14, 140, 165, 0.12);
-      transform: rotate(14deg);
-      transition: transform .3s var(--ease);
-    }
-
-    .solution-card:hover::after { transform: rotate(2deg) scale(1.12); }
-
-    .solution-card.featured::after { background: rgba(14, 140, 165, 0.42); }
-
-    .solution-card h3 {
-      position: relative;
-      z-index: 1;
-      color: var(--azul);
-      font-size: 1.7rem;
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      margin: 0 0 12px;
-    }
-
-    .solution-card.featured h3 { color: #fff; }
-
-    .solution-card p {
-      position: relative;
-      z-index: 1;
-      color: #637078;
-      margin: 0 0 20px;
-    }
-
-    .solution-card.featured p { color: rgba(255, 255, 255, 0.78); }
-
-    .solution-card ul {
-      position: relative;
-      z-index: 1;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 10px;
-    }
-
-    .solution-card li {
-      display: flex;
-      gap: 10px;
-      align-items: start;
-      color: #52616a;
-      font-size: 0.94rem;
-    }
-
-    .solution-card.featured li { color: rgba(255, 255, 255, 0.82); }
-
-    .solution-card li::before {
-      content: "✓";
-      color: var(--turquesa);
-      font-weight: 900;
-    }
-
-    .process {
-      background: var(--azul);
-      color: #fff;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .process::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 19%;
-      height: 8px;
-      background: var(--turquesa);
-    }
-
-    .process::after {
-      content: "";
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      right: -260px;
-      top: 70px;
-      border: 2px solid rgba(14,140,165,.12);
-      border-radius: 50%;
-      animation: rotateHalo 30s linear infinite;
-    }
-
-    .process .section-head h2 { color: #fff; }
-    .process .section-head p { color: rgba(255, 255, 255, 0.72); }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .step {
-      counter-increment: step;
-      padding: 28px;
-      border-radius: 26px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      min-height: 250px;
-      transition: transform .24s var(--ease), background .24s var(--ease), border-color .24s var(--ease);
-    }
-
-    .step:hover {
-      transform: translateY(-8px);
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(14,140,165,.36);
-    }
-
-    .steps { counter-reset: step; }
-
-    .step::before {
-      content: "0" counter(step);
-      display: inline-flex;
-      margin-bottom: 34px;
-      color: var(--turquesa);
-      font-weight: 900;
-      font-size: 1.1rem;
-    }
-
-    .step h3 {
-      margin: 0 0 10px;
-      font-size: 1.15rem;
-      color: #fff;
-    }
-
-    .step p {
-      margin: 0;
-      color: rgba(255, 255, 255, 0.72);
-      font-size: 0.94rem;
-    }
-
-    .b2b-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .b2b-card {
-      position: relative;
-      padding: 34px;
-      border-radius: 30px;
-      background: #fff;
-      border: 1px solid rgba(20, 37, 68, 0.08);
-      min-height: 360px;
-      overflow: hidden;
-      transition: transform .24s var(--ease), box-shadow .24s var(--ease), border-color .24s var(--ease);
-    }
-
-    .b2b-card::after {
-      content: "";
-      position: absolute;
-      right: -72px;
-      top: -72px;
-      width: 190px;
-      height: 190px;
-      border-radius: 46px;
-      background: rgba(14,140,165,.08);
-      transform: rotate(18deg);
-      transition: transform .28s var(--ease), background .28s var(--ease);
-    }
-
-    .b2b-card:hover {
-      border-color: rgba(14,140,165,.24);
-    }
-
-    .b2b-card:hover::after {
-      transform: rotate(4deg) scale(1.08);
-      background: rgba(14,140,165,.13);
-    }
-
-    .b2b-card:nth-child(2) {
-      background: linear-gradient(135deg, rgba(14, 140, 165, 0.1), rgba(255, 255, 255, 0.9));
-    }
-
-    .b2b-card h3 {
-      margin: 0 0 14px;
-      color: var(--azul);
-      font-size: 1.7rem;
-      letter-spacing: -0.04em;
-      position: relative;
-      z-index: 1;
-    }
-
-    .b2b-card p {
-      margin: 0 0 22px;
-      color: #607078;
-      position: relative;
-      z-index: 1;
-    }
-
-    .check-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 12px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .check-list li {
-      display: flex;
-      align-items: start;
-      gap: 12px;
-      color: #51616a;
-      font-weight: 650;
-    }
-
-    .check-list li::before {
-      content: "";
-      flex: 0 0 10px;
-      width: 10px;
-      height: 10px;
-      margin-top: 8px;
-      border-radius: 50%;
-      background: var(--turquesa);
-      box-shadow: 0 0 0 5px rgba(14,140,165,.1);
-    }
-
-
-    .form-section {
-      background:
-        radial-gradient(circle at 88% 8%, rgba(14, 140, 165, 0.14), transparent 28%),
-        linear-gradient(135deg, #ffffff 0%, #eef5f7 100%);
-      padding: 92px 0;
-      scroll-margin-top: 90px;
-    }
-
-    .form-shell {
-      display: grid;
-      grid-template-columns: 0.82fr 1.18fr;
-      gap: 32px;
-      align-items: start;
-    }
-
-    .form-intro {
-      position: sticky;
-      top: 110px;
-      background: var(--azul);
-      color: #fff;
-      border-radius: 34px;
-      padding: 38px;
-      box-shadow: var(--sombra);
-      overflow: hidden;
-      min-height: 360px;
-    }
-
-    .form-intro::before {
-      content: "";
-      position: absolute;
-      top: -90px;
-      right: -90px;
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      border: 38px solid rgba(14, 140, 165, 0.22);
-      animation: pulseForm 6s ease-in-out infinite;
-    }
-
-    .form-intro::after {
-      content: "";
-      position: absolute;
-      right: -48px;
-      bottom: -48px;
-      width: 160px;
-      height: 160px;
-      border-radius: 38px;
-      background: rgba(14, 140, 165, 0.34);
-      transform: rotate(18deg);
-    }
-
-    @keyframes pulseForm {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.08); opacity: 0.72; }
-    }
-
-    .form-intro .eyebrow,
-    .form-intro h2,
-    .form-intro p,
-    .form-intro .form-intro-list {
-      position: relative;
-      z-index: 1;
-    }
-
-    .form-intro h2 {
-      margin: 0 0 16px;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1;
-      letter-spacing: -0.055em;
-    }
-
-    .form-intro p {
-      margin: 0 0 24px;
-      color: rgba(255, 255, 255, 0.78);
-    }
-
-    .form-intro-list {
-      display: grid;
-      gap: 12px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .form-intro-list li {
-      color: rgba(255, 255, 255, 0.82);
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      font-size: 0.94rem;
-    }
-
-    .form-intro-list li::before {
-      content: "";
-      width: 9px;
-      height: 9px;
-      margin-top: 8px;
-      border-radius: 50%;
-      background: var(--turquesa);
-      flex: 0 0 9px;
-    }
-
-    .lead-form {
-      background: #fff;
-      border-radius: 34px;
-      padding: 34px;
-      border: 1px solid rgba(20, 37, 68, 0.08);
-      box-shadow: 0 20px 54px rgba(20, 37, 68, 0.1);
-      transition: transform .28s var(--ease), box-shadow .28s var(--ease), border-color .28s var(--ease);
-    }
-
-    .lead-form:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 28px 70px rgba(20, 37, 68, 0.14);
-      border-color: rgba(14, 140, 165, 0.24);
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .field {
-      display: grid;
-      gap: 8px;
-    }
-
-    .field.full { grid-column: 1 / -1; }
-
-    label {
-      color: var(--azul);
-      font-weight: 900;
-      font-size: 0.92rem;
-    }
-
-    input,
-    select {
-      width: 100%;
-      min-height: 52px;
-      border: 1px solid rgba(20, 37, 68, 0.16);
-      border-radius: 16px;
-      padding: 0 16px;
-      font: inherit;
-      color: var(--gris);
-      background: #fff;
-      transition: border-color .22s var(--ease), box-shadow .22s var(--ease), transform .22s var(--ease);
-    }
-
-    input:hover,
-    select:hover {
-      border-color: rgba(14, 140, 165, 0.44);
-    }
-
-    input:focus,
-    select:focus {
-      outline: none;
-      border-color: var(--turquesa);
-      box-shadow: 0 0 0 4px rgba(14, 140, 165, 0.12);
-    }
-
-    .conditional-field {
-      display: none;
-      animation: revealField .24s var(--ease) both;
-    }
-
-    .conditional-field.active { display: grid; }
-
-    @keyframes revealField {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .privacy {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin: 20px 0 24px;
-      color: #5f6c73;
-      font-size: 0.88rem;
-    }
-
-    .privacy input {
-      width: 18px;
-      height: 18px;
-      min-height: auto;
-      margin-top: 3px;
-      flex: 0 0 18px;
-    }
-
-    .privacy a {
-      color: var(--turquesa);
-      font-weight: 900;
-    }
-
-    .form-note {
-      margin: 18px 0 0;
-      color: #6b777d;
-      font-size: 0.84rem;
-    }
-
-    .form-status {
-      display: none;
-      margin-top: 18px;
-      padding: 14px 16px;
-      border-radius: 16px;
-      background: rgba(14, 140, 165, 0.1);
-      color: var(--azul);
-      font-weight: 800;
-    }
-
-    .form-status.active { display: block; }
-
-    .cta {
-      padding: 0 0 88px;
-    }
-
-    .cta-box {
-      background:
-        radial-gradient(circle at 88% 18%, rgba(14, 140, 165, 0.22), transparent 24%),
-        var(--azul);
-      color: #fff;
-      border-radius: 38px;
-      padding: 54px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 32px;
-      box-shadow: var(--sombra);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .cta-box::after {
-      content: "";
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      right: -100px;
-      bottom: -120px;
-      border-radius: 50%;
-      background: rgba(14,140,165,.22);
-      animation: floatSlow 8s ease-in-out infinite;
-    }
-
-    .cta-box h2 {
-      margin: 0 0 12px;
-      font-size: clamp(2rem, 4vw, 3.3rem);
-      line-height: 1;
-      letter-spacing: -0.05em;
-      position: relative;
-      z-index: 1;
-    }
-
-    .cta-box p {
-      margin: 0;
-      color: rgba(255, 255, 255, 0.74);
-      max-width: 760px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .cta-box .btn { position: relative; z-index: 1; }
-
-    footer {
-      background: #0f1d35;
-      color: rgba(255, 255, 255, 0.72);
-      padding: 44px 0;
-      font-size: 0.9rem;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.4fr repeat(3, 1fr);
-      gap: 28px;
-    }
-
-    footer strong {
-      display: block;
-      color: #fff;
-      margin-bottom: 10px;
-    }
-
-    .legal-note {
-      margin-top: 32px;
-      padding-top: 22px;
-      border-top: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.54);
-      font-size: 0.78rem;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity .7s var(--ease), transform .7s var(--ease);
-    }
-
-    .reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal[data-delay="1"] { transition-delay: .08s; }
-    .reveal[data-delay="2"] { transition-delay: .16s; }
-    .reveal[data-delay="3"] { transition-delay: .24s; }
-
-    @media (max-width: 940px) {
-      .menu { display: none; }
-      .hero-grid,
-      .about-grid,
-      .b2b-grid,
-      .cta-box,
-      .form-shell { grid-template-columns: 1fr; }
-      .solution-grid { grid-template-columns: 1fr; }
-      .steps { grid-template-columns: repeat(2, 1fr); }
-      .section-head { display: block; }
-      .section-head p { margin-top: 16px; }
-      .trust-strip { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .form-intro { position: relative; top: auto; }
-    }
-
-    @media (max-width: 620px) {
-      .container { width: min(100% - 28px, 1180px); }
-      .hero { padding-top: 60px; }
-      .hero-card { min-height: auto; }
-      .mini-grid,
-      .values,
-      .steps,
-      .footer-grid,
-      .form-grid { grid-template-columns: 1fr; }
-      .cta-box,
-      .lead-form,
-      .form-intro { padding: 34px; }
-      .hero h1 { font-size: clamp(2.3rem, 13vw, 3.8rem); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *,
-      *::before,
-      *::after {
-        animation-duration: .001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .001ms !important;
-        scroll-behavior: auto !important;
-      }
-      .reveal {
-        opacity: 1;
-        transform: none;
-      }
-    }
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Principia Servicios Financieros | Créditos para trabajadores | SOFOM</title>
+  <meta name="description" content="SOFOM ENR mexicana enfocada en créditos de nómina, convenios institucionales y administración responsable de soluciones financieras." />
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-one" data-depth="0.08"></div>
+  <div class="ambient ambient-two" data-depth="0.14"></div>
+  <div class="ambient ambient-three" data-depth="0.06"></div>
+
+  <header>
+    <div class="container nav">
+      <a href="#inicio" class="brand" aria-label="Principia Servicios Financieros">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Principia<small>servicios financieros</small></span>
+      </a>
+      <nav class="menu" aria-label="Navegación principal">
+        <a href="#quienes-somos">Quiénes somos</a>
+        <a href="#soluciones">Soluciones</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#convenios">Convenios</a>
+        <a href="#formulario" class="btn btn-primary">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal is-visible">
+          <span class="eyebrow">Principia Servicios Financieros</span>
+          <h1>Estructuramos, otorgamos y administramos soluciones de crédito con <span>claridad y responsabilidad.</span></h1>
+          <p class="lead">Soluciones de crédito cercanas y confiables para personas que pertenecen a instituciones o empresas con convenio vigente.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#formulario">Solicitar información</a>
+            <a class="btn btn-secondary" href="#soluciones">Conocer soluciones</a>
+          </div>
+          <div class="trust-strip" aria-label="Principios de servicio">
+            <div class="trust-item reveal" data-delay="1"><strong>Claridad</strong><span>Condiciones, pagos y compromisos explicados con orden.</span></div>
+            <div class="trust-item reveal" data-delay="2"><strong>Formalidad</strong><span>Procesos alineados a una operación financiera responsable.</span></div>
+            <div class="trust-item reveal" data-delay="3"><strong>Acompañamiento</strong><span>Atención cercana durante cada etapa del proceso.</span></div>
+          </div>
+        </div>
+
+        <aside class="hero-card reveal tilt-card" data-delay="1" aria-label="Resumen institucional">
+          <div class="card-content">
+            <span class="label">SOFOM ENR mexicana</span>
+            <p class="metric-main">Soluciones de crédito con estructura, operación formal y administración responsable.</p>
+            <p>Trabajamos con instituciones, empresas y gobiernos para acercar crédito de nómina a trabajadores elegibles, bajo procesos documentados y criterios de evaluación definidos.</p>
+            <div class="mini-grid">
+              <div class="mini-card"><strong>2019</strong><span>Formalización de Grupo Principia Futuro.</span></div>
+              <div class="mini-card"><strong>DxN</strong><span>Crédito vía descuento en nómina bajo convenios aplicables.</span></div>
+              <div class="mini-card"><strong>Ecosistema</strong><span>Integración con instituciones, aliados, fondeadores y canales comerciales.</span></div>
+              <div class="mini-card"><strong>Tech</strong><span>Procesos apoyados en datos, tecnología y trazabilidad.</span></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="quienes-somos">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Quiénes somos</span>
+            <h2>Una SOFOM mexicana enfocada en crédito de nómina, convenios y gestión de cartera.</h2>
+          </div>
+          <p>Principia acompaña decisiones financieras importantes con soluciones formales, procesos claros y visión de largo plazo.</p>
+        </div>
+
+        <div class="about-grid">
+          <article class="panel panel-dark reveal tilt-card">
+            <h3>Propósito institucional</h3>
+            <p>Principia Servicios Financieros integra experiencia financiera, relación institucional y administración de cartera para acercar soluciones de crédito a trabajadores elegibles dentro de empresas, gobiernos e instituciones con convenio vigente.</p>
+          </article>
+
+          <div class="values">
+            <article class="value-card reveal" data-delay="1"><div class="icon">01</div><h3>Respaldo y confianza</h3><p>Relaciones de largo plazo basadas en formalidad, cumplimiento y acompañamiento.</p></article>
+            <article class="value-card reveal" data-delay="2"><div class="icon">02</div><h3>Cercanía humana</h3><p>Atención a personas que toman decisiones relevantes, no sólo solicitudes.</p></article>
+            <article class="value-card reveal" data-delay="1"><div class="icon">03</div><h3>Claridad y control</h3><p>Información entendible sobre condiciones, pagos, plazos y compromisos.</p></article>
+            <article class="value-card reveal" data-delay="2"><div class="icon">04</div><h3>Tecnología con propósito</h3><p>Datos y herramientas digitales para procesos más ágiles, seguros y trazables.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="soluciones" class="solutions">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Soluciones</span>
+            <h2>Productos pensados para momentos financieros relevantes.</h2>
+          </div>
+        </div>
+
+        <div class="solution-grid">
+          <article class="solution-card featured reveal tilt-card">
+            <div>
+              <h3>Principia Nómina</h3>
+              <p>Crédito vía descuento en nómina para personas elegibles dentro de convenios vigentes.</p>
+            </div>
+            <ul>
+              <li>Evaluación conforme a capacidad de pago.</li>
+              <li>Condiciones informadas antes de contratar.</li>
+              <li>Proceso con documentación y validaciones aplicables.</li>
+            </ul>
+          </article>
+
+          <article class="solution-card reveal tilt-card" data-delay="1">
+            <div>
+              <h3>Principia Crédito</h3>
+              <p>Seguimiento para personas que ya tienen o han tenido relación crediticia con Principia.</p>
+            </div>
+            <ul>
+              <li>Enfoque en claridad y continuidad.</li>
+              <li>Revisión de elegibilidad y situación vigente.</li>
+              <li>Acompañamiento durante el proceso.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="proceso" class="process">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Proceso</span>
+            <h2>Una experiencia ordenada, trazable y responsable.</h2>
+          </div>
+        </div>
+
+        <div class="steps">
+          <article class="step reveal"><h3>Información inicial</h3><p>Se orienta a la persona sobre requisitos, elegibilidad y alcance del producto disponible.</p></article>
+          <article class="step reveal" data-delay="1"><h3>Evaluación</h3><p>Se revisa documentación, capacidad de pago y condiciones aplicables al convenio.</p></article>
+          <article class="step reveal" data-delay="2"><h3>Condiciones claras</h3><p>Se informa el monto, plazo, pagos, CAT, comisiones y compromisos cuando aplique.</p></article>
+          <article class="step reveal" data-delay="3"><h3>Formalización</h3><p>Se integra el expediente y se continúa el proceso conforme a validaciones y autorización.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="convenios">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Convenios y aliados</span>
+            <h2>Valor para instituciones, fondeadores y ecosistemas comerciales.</h2>
+          </div>
+        </div>
+
+        <div class="b2b-grid">
+          <article class="b2b-card reveal tilt-card">
+            <h3>Para convenios institucionales</h3>
+            <p>Un modelo de crédito formal para colaboradores elegibles, con operación ordenada y comunicación responsable.</p>
+            <ul class="check-list">
+              <li>Atención a empresas, gobiernos e instituciones con convenio.</li>
+              <li>Procesos de originación, administración y seguimiento.</li>
+              <li>Comunicación clara para reducir dudas y fricción.</li>
+            </ul>
+            <a class="btn btn-card" href="#formulario" data-interest="Convenio" aria-label="Solicitar más información para convenios institucionales">Solicitar más información</a>
+          </article>
+
+          <article class="b2b-card reveal tilt-card" data-delay="1">
+            <h3>Para fondeadores y aliados</h3>
+            <p>Una SOFOM enfocada en cartera sana, trazabilidad, disciplina operativa y generación de valor compartido.</p>
+            <ul class="check-list">
+              <li>Información útil para análisis y toma de decisiones.</li>
+              <li>Administración responsable de cartera.</li>
+              <li>Respaldo comercial y operativo del ecosistema VIRAAL, sin sustituir responsabilidades de cada entidad.</li>
+            </ul>
+            <a class="btn btn-card" href="#formulario" data-interest="Fondeo" aria-label="Solicitar más información para fondeadores y aliados">Solicitar más información</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="formulario" class="form-section">
+      <div class="container form-shell">
+        <div class="form-intro reveal">
+          <span class="eyebrow">Contacto</span>
+          <h2>Solicita más información.</h2>
+          <p>Completa el formulario para recibir orientación según el tipo de interés. Todos los campos visibles son obligatorios para continuar.</p>
+          <ul class="form-intro-list">
+            <li>Ser cliente: trabajador o pensionado.</li>
+            <li>Convenio: gobierno o privado.</li>
+            <li>Fondeo: contacto para aliados y fondeadores.</li>
+          </ul>
+        </div>
+
+        <form class="lead-form reveal" id="leadForm" action="#" method="post" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" autocomplete="name" required />
+            </div>
+
+            <div class="field">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" autocomplete="tel" inputmode="tel" required />
+            </div>
+
+            <div class="field">
+              <label for="correo">Correo</label>
+              <input type="email" id="correo" name="correo" autocomplete="email" required />
+            </div>
+
+            <div class="field">
+              <label for="interes">Me interesa</label>
+              <select id="interes" name="interes" required>
+                <option value="" selected disabled>Selecciona una opción</option>
+                <option value="Ser cliente">Ser cliente</option>
+                <option value="Convenio">Convenio</option>
+                <option value="Fondeo">Fondeo</option>
+              </select>
+            </div>
+
+            <div class="field conditional-field full" id="clienteField">
+              <label for="tipoCliente">Tipo de cliente</label>
+              <select id="tipoCliente" name="tipo_cliente">
+                <option value="" selected disabled>Selecciona una opción</option>
+                <option value="Trabajador">Trabajador</option>
+                <option value="Pensionado">Pensionado</option>
+              </select>
+            </div>
+
+            <div class="field conditional-field full" id="convenioField">
+              <label for="tipoConvenio">Tipo de convenio</label>
+              <select id="tipoConvenio" name="tipo_convenio">
+                <option value="" selected disabled>Selecciona una opción</option>
+                <option value="Gobierno">Gobierno</option>
+                <option value="Privado">Privado</option>
+              </select>
+            </div>
+          </div>
+
+          <label class="privacy">
+            <input type="checkbox" id="privacidad" name="privacidad" required />
+            <span>He leído y acepto el <a href="#" aria-label="Aviso de privacidad">aviso de privacidad</a> y autorizo el uso de mis datos para ser contactado por Principia Servicios Financieros.</span>
+          </label>
+
+          <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+          <p class="form-note">La disponibilidad del producto, condiciones y aprobación están sujetas a elegibilidad, análisis, documentación, convenio vigente y validación correspondiente.</p>
+          <div class="form-status" id="formStatus" role="status" aria-live="polite">Gracias. Tu información quedó lista para enviarse cuando se conecte el formulario a CRM, correo o HubSpot.</div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong>Principia Servicios Financieros</strong>
+          <span>Marca comercial de Grupo Principia Futuro, S.A.P.I. de C.V., SOFOM, E.N.R.</span>
+        </div>
+        <div><strong>Dirección</strong><span>Amores 28, 4to piso, Col. del Valle, C.P. 03100, CDMX</span></div>
+        <div><strong>Contacto</strong><span>contacto@principiafuturo.mx<br>(55) 587-63-99</span></div>
+        <div><strong>Información</strong><span>UNE · Aviso de privacidad · Buró de Entidades Financieras · Términos y condiciones</span></div>
+      </div>
+      <p class="legal-note">Grupo Principia Futuro, S.A.P.I. de C.V., SOFOM, E.N.R. no requiere autorización de la Secretaría de Hacienda y Crédito Público para constituirse y operar con tal carácter, y está sujeta a la supervisión de la Comisión Nacional Bancaria y de Valores únicamente para efectos del artículo 56 de la Ley General de Organizaciones y Actividades Auxiliares del Crédito.</p>
+    </div>
+  </footer>
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
