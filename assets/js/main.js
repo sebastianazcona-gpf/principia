@@ -249,6 +249,10 @@ copyReplacements.forEach(({ from, to }) => {
   });
 });
 
+document.querySelectorAll('.role-band').forEach((section) => {
+  section.remove();
+});
+
 const mvVisualStylesId = 'gpf-mission-vision-visuals';
 if (!document.getElementById(mvVisualStylesId)) {
   const style = document.createElement('style');
