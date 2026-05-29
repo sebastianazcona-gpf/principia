@@ -1,3 +1,19 @@
+const spacingOverrideId = 'gpf-compact-section-spacing';
+
+if (!document.getElementById(spacingOverrideId)) {
+  const compactSpacing = document.createElement('style');
+  compactSpacing.id = spacingOverrideId;
+  compactSpacing.textContent = `
+    @media (min-width: 981px) {
+      section { padding-top: 64px; padding-bottom: 64px; }
+      .hero { padding-top: 84px; padding-bottom: 56px; }
+      .page-hero { padding-top: 84px; padding-bottom: 52px; }
+      .section-head { margin-bottom: 30px; }
+    }
+  `;
+  document.head.appendChild(compactSpacing);
+}
+
 const siteHeader = document.querySelector('header');
 const siteNav = document.querySelector('header .nav');
 const mainMenu = document.querySelector('header .menu');
