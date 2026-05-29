@@ -182,6 +182,21 @@ if (leadForm) {
   });
 }
 
+const copyReplacements = [
+  {
+    from: 'GPF existe para acompañar decisiones financieras importantes sin promesas fáciles ni atajos comerciales. Su valor está en operar con claridad, ordenar procesos, cuidar la trazabilidad y construir relaciones sostenibles.',
+    to: 'GPF existe para estar presente cuando las personas necesitan respaldo para avanzar. En momentos importantes, especiales o urgentes, busca ofrecer soluciones financieras claras, responsables y cercanas, acompañando cada decisión con orden, transparencia y confianza.'
+  }
+];
+
+copyReplacements.forEach(({ from, to }) => {
+  document.querySelectorAll('p, span, li, h1, h2, h3, h4').forEach((element) => {
+    if (element.textContent && element.textContent.includes(from)) {
+      element.textContent = element.textContent.replace(from, to);
+    }
+  });
+});
+
 const legalFooterScriptId = 'gpf-legal-footer-script';
 if (!document.getElementById(legalFooterScriptId)) {
   const legalFooterScript = document.createElement('script');
