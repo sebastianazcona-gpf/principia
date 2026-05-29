@@ -1,0 +1,3 @@
+const footer = document.querySelector('footer') || document.body.appendChild(document.createElement('footer'));
+footer.className = 'gpf-legal-footer';
+footer.innerHTML = '<div class="container"><p>Grupo Principia Futuro, S.A.P.I. de C.V., SOFOM, E.N.R., para su constitución y operación con tal carácter no requiere autorización de la Secretaría de Hacienda y Crédito Público, y está sujeta a la supervisión de la Comisión Nacional Bancaria y de Valores únicamente para efectos de lo dispuesto por el artículo 56 de la Ley General de Organizaciones y Actividades Auxiliares del Crédito.</p><p><a href="/buro-de-entidades-financieras/">Buró de Entidades Financieras</a> · <a href="/une/">UNE</a> · <a href="/aviso-de-privacidad/">Aviso de Privacidad</a></p></div>';
