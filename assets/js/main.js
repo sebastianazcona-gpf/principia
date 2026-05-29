@@ -186,6 +186,30 @@ const copyReplacements = [
   {
     from: 'GPF existe para acompañar decisiones financieras importantes sin promesas fáciles ni atajos comerciales. Su valor está en operar con claridad, ordenar procesos, cuidar la trazabilidad y construir relaciones sostenibles.',
     to: 'GPF existe para estar presente cuando las personas necesitan respaldo para avanzar. En momentos importantes, especiales o urgentes, busca ofrecer soluciones financieras claras, responsables y cercanas, acompañando cada decisión con orden, transparencia y confianza.'
+  },
+  {
+    from: 'Lectura B2C',
+    to: 'Para personas'
+  },
+  {
+    from: 'Para personas, GPF debe sentirse como respaldo claro, serio y cercano en decisiones financieras importantes.',
+    to: 'GPF busca acompañar a personas que necesitan respaldo financiero en momentos importantes, con información clara, atención cercana y procesos responsables.'
+  },
+  {
+    from: 'Lectura B2B',
+    to: 'Para instituciones, aliados y fondeadores'
+  },
+  {
+    from: 'Para instituciones, aliados y fondeadores, GPF debe proyectar estructura, control, cumplimiento y capacidad operativa.',
+    to: 'GPF proyecta una operación financiera enfocada en orden, cumplimiento, trazabilidad y administración responsable de cartera.'
+  },
+  {
+    from: 'Administración responsable de cartera, trazabilidad e información útil.',
+    to: 'Administración de cartera con seguimiento, control operativo e información útil.'
+  },
+  {
+    from: 'GPF debe comunicar con sentido humano hacia personas y con solidez institucional hacia convenios, aliados y fondeadores.',
+    to: ''
   }
 ];
 
