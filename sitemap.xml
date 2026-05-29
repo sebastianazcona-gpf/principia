@@ -24,4 +24,20 @@
     <loc>https://principia-ochre.vercel.app/contacto/</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://principia-ochre.vercel.app/aviso-de-privacidad/</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://principia-ochre.vercel.app/une/</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://principia-ochre.vercel.app/buro-de-entidades-financieras/</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://principia-ochre.vercel.app/informacion-legal/</loc>
+    <priority>0.5</priority>
+  </url>
 </urlset>
