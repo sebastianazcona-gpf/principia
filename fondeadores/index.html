@@ -17,7 +17,52 @@
   <link rel="icon" href="/assets/img/favicon.svg?v=5" type="image/svg+xml" />
   <link rel="stylesheet" href="/assets/css/styles.css" />
   <style>
-    .brand-image{font-size:0;letter-spacing:0;max-width:220px;flex:0 0 auto}.brand-logo{display:block;width:clamp(145px,14vw,190px);height:auto;transition:transform .28s var(--ease),filter .28s var(--ease)}.brand-image:hover .brand-logo{transform:translateY(-2px);filter:drop-shadow(0 14px 24px rgba(20,37,68,.16))}.page-hero{position:relative;overflow:hidden;background:radial-gradient(circle at 92% 12%,rgba(14,140,165,.16),transparent 28%),linear-gradient(135deg,#fff 0%,#eef5f7 100%);padding:92px 0 74px}.page-hero:before{content:"";position:absolute;top:0;left:0;width:22%;height:8px;background:var(--turquesa)}.hero-grid-page{display:grid;grid-template-columns:1.02fr .98fr;gap:44px;align-items:center}.page-hero h1{margin:0 0 22px;color:var(--azul);font-size:clamp(2.55rem,5.4vw,5.1rem);line-height:.98;letter-spacing:-.065em;max-width:940px}.page-hero h1 span{color:var(--turquesa)}.hero-panel{background:var(--azul);color:#fff;border-radius:34px;padding:34px;box-shadow:var(--sombra);position:relative;overflow:hidden}.hero-panel:before{content:"";position:absolute;right:-86px;top:-86px;width:240px;height:240px;border-radius:50%;border:38px solid rgba(14,140,165,.22);animation:rotateHalo 22s linear infinite}.hero-panel>*{position:relative;z-index:1}.hero-panel p{margin:0;color:rgba(255,255,255,.78)}.metric-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px}.metric{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:18px}.metric strong{display:block;color:#fff;font-size:1.8rem;letter-spacing:-.04em}.metric span{color:rgba(255,255,255,.78);font-size:.9rem}.info-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px}.info-card{background:#fff;border:1px solid rgba(20,37,68,.08);border-radius:30px;padding:32px;box-shadow:0 18px 44px rgba(20,37,68,.07)}.info-card.dark{background:var(--azul);color:#fff}.info-card h2,.info-card h3{margin:0 0 14px;color:inherit;font-size:clamp(1.7rem,3vw,2.55rem);line-height:1;letter-spacing:-.05em}.info-card p{margin:0;color:#607078}.info-card.dark p{color:rgba(255,255,255,.78)}.bullet-list{margin:20px 0 0;padding:0;list-style:none;display:grid;gap:12px}.bullet-list li{display:flex;gap:12px;color:#52616a;font-weight:650}.dark .bullet-list li{color:rgba(255,255,255,.82)}.bullet-list li:before{content:"";flex:0 0 10px;width:10px;height:10px;margin-top:8px;border-radius:50%;background:var(--turquesa);box-shadow:0 0 0 5px rgba(14,140,165,.1)}.pillars-section{background:linear-gradient(135deg,#fff 0%,#eef5f7 100%)}.pillar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.pillar-card{background:#fff;border:1px solid rgba(20,37,68,.08);border-radius:26px;padding:24px;box-shadow:0 16px 40px rgba(20,37,68,.07)}.pillar-card strong{display:inline-flex;width:46px;height:46px;border-radius:15px;background:var(--turquesa);color:#fff;align-items:center;justify-content:center;margin-bottom:18px}.pillar-card h3{margin:0 0 10px;color:var(--azul);font-size:1.2rem}.pillar-card p{margin:0;color:#607078;font-size:.94rem;line-height:1.55}.risk-box{background:#fff;border-left:6px solid var(--turquesa);border-radius:24px;padding:28px;box-shadow:0 18px 44px rgba(20,37,68,.07)}.risk-box p{margin:0;color:#52616a}.risk-box strong{color:var(--azul)}@media(max-width:980px){.menu{display:none}.hero-grid-page,.info-grid{grid-template-columns:1fr}.pillar-grid{grid-template-columns:1fr 1fr}.brand-logo{width:175px}}@media(max-width:620px){.brand-logo{width:160px}.page-hero{padding-top:64px}.metric-grid,.pillar-grid{grid-template-columns:1fr}.info-card{padding:28px}}
+    .brand-image{font-size:0;letter-spacing:0;max-width:220px;flex:0 0 auto}
+    .brand-logo{display:block;width:clamp(145px,14vw,190px);height:auto;transition:transform .28s var(--ease),filter .28s var(--ease)}
+    .brand-image:hover .brand-logo{transform:translateY(-2px);filter:drop-shadow(0 14px 24px rgba(20,37,68,.16))}
+    .page-hero{position:relative;overflow:hidden;background:radial-gradient(circle at 92% 12%,rgba(14,140,165,.16),transparent 28%),linear-gradient(135deg,#fff 0%,#eef5f7 100%);padding:92px 0 74px}
+    .page-hero:before{content:"";position:absolute;top:0;left:0;width:22%;height:8px;background:var(--turquesa)}
+    .hero-grid-page{display:grid;grid-template-columns:1.02fr .98fr;gap:44px;align-items:center}
+    .page-hero h1{margin:0 0 22px;color:var(--azul);font-size:clamp(2.55rem,5.4vw,5.1rem);line-height:.98;letter-spacing:-.065em;max-width:940px}
+    .page-hero h1 span{color:var(--turquesa)}
+    .hero-panel{background:var(--azul);color:#fff;border-radius:34px;padding:34px;box-shadow:var(--sombra);position:relative;overflow:hidden}
+    .hero-panel:before{content:"";position:absolute;right:-86px;top:-86px;width:240px;height:240px;border-radius:50%;border:38px solid rgba(14,140,165,.22);animation:rotateHalo 22s linear infinite}
+    .hero-panel>*{position:relative;z-index:1}
+    .hero-panel p{margin:0;color:rgba(255,255,255,.78)}
+    .funding-panel{min-height:470px;display:flex;flex-direction:column;justify-content:center}
+    .funding-network{--node-distance:164px;position:relative;width:min(420px,100%);aspect-ratio:1;margin:16px auto 0;border-radius:999px;isolation:isolate;background:radial-gradient(circle,rgba(14,140,165,.18) 0%,rgba(14,140,165,.08) 34%,rgba(255,255,255,.035) 62%,transparent 70%)}
+    .funding-network:before,.funding-network:after{content:"";position:absolute;inset:8%;border-radius:999px;border:1px solid rgba(255,255,255,.1)}
+    .funding-network:after{inset:24%;border-color:rgba(14,140,165,.24);box-shadow:0 0 50px rgba(14,140,165,.12);animation:fundingHalo 4.8s ease-in-out infinite}
+    .funding-core{position:absolute;left:50%;top:50%;z-index:5;width:92px;height:92px;border-radius:30px;display:grid;place-items:center;transform:translate(-50%,-50%);background:linear-gradient(135deg,var(--turquesa),#0b6f86);color:#fff;font-size:1.15rem;font-weight:900;letter-spacing:.08em;box-shadow:0 0 0 10px rgba(14,140,165,.14),0 26px 56px rgba(14,140,165,.34)}
+    .funding-pair{position:absolute;left:50%;top:50%;z-index:3;width:0;height:0;transform:rotate(var(--angle));transform-origin:center}
+    .funding-line{position:absolute;left:48px;top:-1px;width:calc(var(--node-distance) - 58px);height:2px;border-radius:999px;background:linear-gradient(90deg,rgba(14,140,165,.95),rgba(255,255,255,.2));opacity:0;transform:scaleX(0);transform-origin:left center;box-shadow:0 0 20px rgba(14,140,165,.5);transition:opacity .8s ease,transform 1.05s cubic-bezier(.2,.8,.2,1)}
+    .funding-node{position:absolute;left:var(--node-distance);top:0;width:18px;height:18px;border-radius:999px;background:#e8fdff;opacity:0;transform:translate(-50%,-50%) scale(.35);box-shadow:0 0 0 0 rgba(14,140,165,0);transition:opacity .85s ease,transform .95s cubic-bezier(.2,.8,.2,1),box-shadow .95s ease,background .95s ease}
+    .funding-pair.is-active .funding-line{opacity:.92;transform:scaleX(1)}
+    .funding-pair.is-active .funding-node{opacity:1;transform:translate(-50%,-50%) scale(1);background:var(--turquesa);box-shadow:0 0 0 8px rgba(14,140,165,.16),0 0 26px rgba(14,140,165,.94),0 0 58px rgba(255,255,255,.45)}
+    .funding-network.is-resetting .funding-pair .funding-line,.funding-network.is-resetting .funding-pair .funding-node{opacity:0;transform:scaleX(0)}
+    .funding-network.is-resetting .funding-pair .funding-node{transform:translate(-50%,-50%) scale(.35)}
+    @keyframes fundingHalo{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.08);opacity:.42}}
+    .info-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px}
+    .info-card{background:#fff;border:1px solid rgba(20,37,68,.08);border-radius:30px;padding:32px;box-shadow:0 18px 44px rgba(20,37,68,.07)}
+    .info-card.dark{background:var(--azul);color:#fff}
+    .info-card h2,.info-card h3{margin:0 0 14px;color:inherit;font-size:clamp(1.7rem,3vw,2.55rem);line-height:1;letter-spacing:-.05em}
+    .info-card p{margin:0;color:#607078}
+    .info-card.dark p{color:rgba(255,255,255,.78)}
+    .bullet-list{margin:20px 0 0;padding:0;list-style:none;display:grid;gap:12px}
+    .bullet-list li{display:flex;gap:12px;color:#52616a;font-weight:650}
+    .dark .bullet-list li{color:rgba(255,255,255,.82)}
+    .bullet-list li:before{content:"";flex:0 0 10px;width:10px;height:10px;margin-top:8px;border-radius:50%;background:var(--turquesa);box-shadow:0 0 0 5px rgba(14,140,165,.1)}
+    .pillars-section{background:linear-gradient(135deg,#fff 0%,#eef5f7 100%)}
+    .pillar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .pillar-card{background:#fff;border:1px solid rgba(20,37,68,.08);border-radius:26px;padding:24px;box-shadow:0 16px 40px rgba(20,37,68,.07)}
+    .pillar-card strong{display:inline-flex;width:46px;height:46px;border-radius:15px;background:var(--turquesa);color:#fff;align-items:center;justify-content:center;margin-bottom:18px}
+    .pillar-card h3{margin:0 0 10px;color:var(--azul);font-size:1.2rem}
+    .pillar-card p{margin:0;color:#607078;font-size:.94rem;line-height:1.55}
+    .risk-box{background:#fff;border-left:6px solid var(--turquesa);border-radius:24px;padding:28px;box-shadow:0 18px 44px rgba(20,37,68,.07)}
+    .risk-box p{margin:0;color:#52616a}
+    .risk-box strong{color:var(--azul)}
+    @media(max-width:980px){.menu{display:none}.hero-grid-page,.info-grid{grid-template-columns:1fr}.pillar-grid{grid-template-columns:1fr 1fr}.brand-logo{width:175px}.funding-panel{min-height:430px}.funding-network{--node-distance:150px;max-width:380px}}
+    @media(max-width:620px){.brand-logo{width:160px}.page-hero{padding-top:64px}.pillar-grid{grid-template-columns:1fr}.info-card{padding:28px}.funding-panel{min-height:360px;padding:26px}.funding-network{--node-distance:116px;max-width:300px}.funding-core{width:76px;height:76px;border-radius:24px}.funding-line{left:40px;width:calc(var(--node-distance) - 48px)}.funding-node{width:15px;height:15px}}
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Fondeadores y alianzas de fondeo | Grupo Principia Futuro","url":"https://principia-ochre.vercel.app/fondeadores/","about":{"@type":"FinancialService","name":"Grupo Principia Futuro","legalName":"Grupo Principia Futuro, S.A.P.I. de C.V., SOFOM, E.N.R."}}</script>
 </head>
@@ -25,12 +70,45 @@
   <div class="ambient ambient-one" data-depth="0.08"></div><div class="ambient ambient-two" data-depth="0.14"></div><div class="ambient ambient-three" data-depth="0.06"></div>
   <header><div class="container nav"><a href="/" class="brand brand-image" aria-label="Grupo Principia Futuro"><img class="brand-logo" src="/assets/img/logo-gpf.svg?v=5" alt="Grupo Principia Futuro" /></a><nav class="menu" aria-label="Navegación principal"><a href="/quienes-somos/">Quiénes somos</a><a href="/solicitar-credito/">Solicitar crédito</a><a href="/convenios/">Convenios</a><a href="/fondeadores/">Fondeadores</a><a href="/contacto/" class="btn btn-primary">Contacto</a></nav></div></header>
   <main>
-    <section class="page-hero"><div class="container hero-grid-page"><div class="reveal is-visible"><span class="eyebrow">Fondeadores</span><h1>Fondeo para crédito vía nómina con <span>visión institucional de cartera.</span></h1><p class="lead">GPF busca construir relaciones con fondeadores y aliados financieros interesados en modelos vinculados a crédito vía nómina, convenios institucionales, trazabilidad y administración responsable de cartera.</p><div class="hero-actions"><a class="btn btn-primary" href="/contacto/">Contactar a GPF</a><a class="btn btn-secondary" href="/quienes-somos/">Conocer GPF</a></div></div><aside class="hero-panel reveal tilt-card" data-delay="1"><span class="eyebrow">Base de análisis</span><p>GPF puede presentar información institucional para analizar convenios, originación, dispersión, plazos, recurrencia, cobertura geográfica y eficiencia operativa.</p><div class="metric-grid"><div class="metric"><strong>XXX</strong><span>créditos dispersados históricos</span></div><div class="metric"><strong>XXX</strong><span>monto total dispersado</span></div><div class="metric"><strong>XXX</strong><span>promedio solicitud a dispersión</span></div><div class="metric"><strong>XXX</strong><span>éxito contra finalizados</span></div></div></aside></div></section>
+    <section class="page-hero"><div class="container hero-grid-page"><div class="reveal is-visible"><span class="eyebrow">Fondeadores</span><h1>Fondeo para crédito vía nómina con <span>visión institucional de cartera.</span></h1><p class="lead">GPF busca construir relaciones con fondeadores y aliados financieros interesados en modelos vinculados a crédito vía nómina, convenios institucionales, trazabilidad y administración responsable de cartera.</p><div class="hero-actions"><a class="btn btn-primary" href="/contacto/">Contactar a GPF</a><a class="btn btn-secondary" href="/quienes-somos/">Conocer GPF</a></div></div><aside class="hero-panel funding-panel reveal tilt-card" data-delay="1" aria-label="Esquema animado de relación entre GPF y fondeadores"><span class="eyebrow">Red de fondeo</span><div class="funding-network" data-funding-network aria-hidden="true"><div class="funding-core">GPF</div><span class="funding-pair" data-funding-pair style="--angle:-90deg"><span class="funding-line"></span><span class="funding-node"></span></span><span class="funding-pair" data-funding-pair style="--angle:-54deg"><span class="funding-line"></span><span class="funding-node"></span></span><span class="funding-pair" data-funding-pair style="--angle:-18deg"><span class="funding-line"></span><span class="funding-node"></span></span><span class="funding-pair" data-funding-pair style="--angle:18deg"><span class="funding-line"></span><span class="funding-node"></span></span><span class="funding-pair" data-funding-pair style="--angle:54deg"><span class="funding-line"></span><span class="funding-node"></span></span><span class="funding-pair" data-funding-pair style="--angle:90deg"><span class="funding-line"></span><span class="funding-node"></span></span><span class="funding-pair" data-funding-pair style="--angle:126deg"><span class="funding-line"></span><span class="funding-node"></span></span><span class="funding-pair" data-funding-pair style="--angle:162deg"><span class="funding-line"></span><span class="funding-node"></span></span><span class="funding-pair" data-funding-pair style="--angle:198deg"><span class="funding-line"></span><span class="funding-node"></span></span><span class="funding-pair" data-funding-pair style="--angle:234deg"><span class="funding-line"></span><span class="funding-node"></span></span></div></aside></div></section>
     <section><div class="container info-grid"><article class="info-card dark reveal tilt-card"><span class="eyebrow">Enfoque institucional</span><h2>El fondeo debe sostener operación, cartera sana y colocación responsable.</h2><p>GPF estructura créditos vía nómina ligados a convenios con entidades públicas y privadas. Para fondeadores, el valor está en evaluar cartera, reglas de originación, trazabilidad, cobranza y disciplina operativa.</p></article><article class="info-card reveal tilt-card" data-delay="1"><h3>Qué puede revisar un fondeador</h3><p>La información para fondeo debe enfocarse en datos, operación y control, no en promesas comerciales.</p><ul class="bullet-list"><li>Convenios activos o potenciales y concentración geográfica.</li><li>Perfil de crédito, plazos, periodicidad, tasas y CAT por convenio.</li><li>Proceso de originación, validación, cesión, cobranza y seguimiento.</li><li>Comportamiento histórico y brechas de información pendientes.</li></ul></article></div></section>
     <section class="pillars-section"><div class="container"><div class="section-head reveal"><div><span class="eyebrow">Criterios de evaluación</span><h2>Cuatro temas que deben sostener una conversación de fondeo.</h2></div><p>La relación con fondeadores debe partir de información verificable, trazabilidad y entendimiento de riesgos.</p></div><div class="pillar-grid"><article class="pillar-card reveal"><strong>01</strong><h3>Cartera</h3><p>Historial de colocación, convenios principales, ticket promedio, plazos y periodicidad.</p></article><article class="pillar-card reveal" data-delay="1"><strong>02</strong><h3>Convenios</h3><p>Entidades públicas y privadas con población elegible y reglas de descuento vía nómina.</p></article><article class="pillar-card reveal" data-delay="2"><strong>03</strong><h3>Operación</h3><p>Originación, validación, formalización, dispersión, cesión, cobranza y reporteo.</p></article><article class="pillar-card reveal" data-delay="3"><strong>04</strong><h3>Trazabilidad</h3><p>Datos, documentación, identificadores, seguimiento y control de información.</p></article></div></div></section>
     <section><div class="container"><div class="risk-box reveal"><p><strong>Importante:</strong> esta página no constituye oferta pública de inversión ni promesa de rendimiento. Cualquier esquema de fondeo debe revisarse con información financiera, legal, operativa y contractual vigente.</p></div></div></section>
     <section class="cta"><div class="container"><div class="cta-box reveal"><div><h2>Analiza una conversación de fondeo con GPF.</h2><p>Canaliza tu interés para revisar información institucional, cartera, modelo operativo y posibles siguientes pasos.</p></div><a class="btn btn-primary" href="/contacto/">Ir a contacto</a></div></div></section>
   </main>
   <footer><div class="container"><div class="footer-grid"><div><strong>Grupo Principia Futuro</strong><span>Grupo Principia Futuro, S.A.P.I. de C.V., SOFOM, E.N.R.</span></div><div><strong>Dirección</strong><span>Amores 28, 4to piso, Col. del Valle, C.P. 03100, CDMX</span></div><div><strong>Contacto</strong><span>contacto@principiafuturo.mx<br>(55) 587-63-99</span></div><div><strong>Información</strong><span>UNE · Aviso de privacidad · Buró de Entidades Financieras · Términos y condiciones</span></div></div><p class="legal-note">Grupo Principia Futuro, S.A.P.I. de C.V., SOFOM, E.N.R. no requiere autorización de la Secretaría de Hacienda y Crédito Público para constituirse y operar con tal carácter, y está sujeta a la supervisión de la Comisión Nacional Bancaria y de Valores únicamente para efectos del artículo 56 de la Ley General de Organizaciones y Actividades Auxiliares del Crédito.</p></div></footer><script src="/assets/js/main.js" defer></script>
+  <script>
+    (function(){
+      function startFundingNetwork(){
+        document.querySelectorAll('[data-funding-network]').forEach(function(network){
+          var pairs = Array.prototype.slice.call(network.querySelectorAll('[data-funding-pair]'));
+          if(!pairs.length){return;}
+          var step = 620;
+          var hold = 1600;
+          var resetPause = 700;
+          var total = pairs.length * step + hold + resetPause;
+          function cycle(){
+            network.classList.add('is-resetting');
+            pairs.forEach(function(pair){pair.classList.remove('is-active');});
+            window.setTimeout(function(){network.classList.remove('is-resetting');}, 80);
+            pairs.forEach(function(pair,index){
+              window.setTimeout(function(){pair.classList.add('is-active');}, 360 + index * step);
+            });
+            window.setTimeout(function(){
+              network.classList.add('is-resetting');
+              pairs.forEach(function(pair){pair.classList.remove('is-active');});
+            }, 360 + pairs.length * step + hold);
+          }
+          cycle();
+          window.setInterval(cycle,total);
+        });
+      }
+      if(document.readyState === 'loading'){
+        document.addEventListener('DOMContentLoaded',startFundingNetwork);
+      }else{
+        startFundingNetwork();
+      }
+    })();
+  </script>
 </body>
 </html>
