@@ -234,6 +234,30 @@ const copyReplacements = [
   {
     from: 'Antes de comunicar el producto a trabajadores, el convenio debe revisar viabilidad, reglas de descuento, documentación, tratamiento de datos y responsabilidades operativas.',
     to: ''
+  },
+  {
+    from: 'Qué puede revisar un fondeador',
+    to: 'Información para evaluar una relación de fondeo'
+  },
+  {
+    from: 'La información para fondeo debe enfocarse en datos, operación y control, no en promesas comerciales.',
+    to: 'GPF busca construir relaciones de fondeo con información clara, trazabilidad operativa y administración responsable de cartera. La revisión puede partir de datos históricos, convenios, perfil de crédito y procesos de originación, cesión, cobranza y seguimiento.'
+  },
+  {
+    from: 'Convenios activos o potenciales y concentración geográfica.',
+    to: 'Cartera histórica, monto colocado, créditos dispersados y comportamiento por convenio.'
+  },
+  {
+    from: 'Perfil de crédito, plazos, periodicidad, tasas y CAT por convenio.',
+    to: 'Concentración por entidad, tipo de dependencia, plazo, periodicidad, tasa y CAT.'
+  },
+  {
+    from: 'Proceso de originación, validación, cesión, cobranza y seguimiento.',
+    to: 'Procesos de originación, validación, formalización, cesión, cobranza y seguimiento.'
+  },
+  {
+    from: 'Comportamiento histórico y brechas de información pendientes.',
+    to: 'Información disponible, brechas de datos y próximos elementos para fortalecer el análisis.'
   }
 ];
 
@@ -249,7 +273,7 @@ copyReplacements.forEach(({ from, to }) => {
   });
 });
 
-document.querySelectorAll('.role-band').forEach((section) => {
+document.querySelectorAll('.role-band, .pillars-section').forEach((section) => {
   section.remove();
 });
 
