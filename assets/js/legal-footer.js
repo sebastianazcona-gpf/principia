@@ -33,3 +33,9 @@ document.querySelectorAll('a[aria-label="Aviso de privacidad"], a[href="#"]').fo
   const text = (link.textContent || '').trim().toLowerCase();
   if (text.includes('aviso de privacidad')) link.href = '/aviso-de-privacidad/';
 });
+
+if (window.location.pathname.replace(/\/$/, '') === '/convenios') {
+  const cleanup = document.createElement('style');
+  cleanup.textContent = '.convenio-map{display:none!important}';
+  document.head.appendChild(cleanup);
+}
