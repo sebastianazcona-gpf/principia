@@ -18,15 +18,15 @@ if (!document.getElementById(styleId)) {
 
 const footer = document.querySelector('footer') || document.body.appendChild(document.createElement('footer'));
 footer.className = 'gpf-legal-footer';
-footer.setAttribute('aria-label', 'Informacion legal y atencion a usuarios');
+footer.setAttribute('aria-label', 'Informaci&oacute;n legal y atenci&oacute;n a usuarios');
 footer.innerHTML = `
-  <div class="gpf-legal-notice"><div class="container"><p>Grupo Principia Futuro, S.A.P.I. de C.V., SOFOM, E.N.R., para su constitucion y operacion con tal caracter no requiere autorizacion de la Secretaria de Hacienda y Credito Publico, y esta sujeta a la supervision de la Comision Nacional Bancaria y de Valores unicamente para efectos de lo dispuesto por el articulo 56 de la Ley General de Organizaciones y Actividades Auxiliares del Credito.</p></div></div>
+  <div class="gpf-legal-notice"><div class="container"><p>Grupo Principia Futuro, S.A.P.I. de C.V., SOFOM, E.N.R., para su constituci&oacute;n y operaci&oacute;n con tal car&aacute;cter no requiere autorizaci&oacute;n de la Secretar&iacute;a de Hacienda y Cr&eacute;dito P&uacute;blico, y est&aacute; sujeta a la supervisi&oacute;n de la Comisi&oacute;n Nacional Bancaria y de Valores &uacute;nicamente para efectos de lo dispuesto por el art&iacute;culo 56 de la Ley General de Organizaciones y Actividades Auxiliares del Cr&eacute;dito.</p></div></div>
   <div class="container gpf-legal-content">
-    <div class="gpf-legal-column gpf-legal-brand"><strong class="gpf-legal-brand-name">Grupo Principia Futuro</strong><p>Grupo Principia Futuro, S.A.P.I. de C.V., SOFOM, E.N.R.</p><p>Amores 28, Col. Del Valle, C.P. 03103, Ciudad de Mexico.</p><div class="gpf-legal-links"><a href="/aviso-de-privacidad/">Aviso de Privacidad</a><a href="/une/">UNE</a><a href="/buro-de-entidades-financieras/">Buro de Entidades Financieras</a><a href="/informacion-legal/">Informacion legal</a></div></div>
-    <div class="gpf-legal-column"><h2>Atencion a usuarios</h2><p><strong>UNE</strong><br>Tel. <a href="tel:+52555876399">(55) 5876-399</a><br><a href="mailto:une@principiafuturo.com.mx">une@principiafuturo.com.mx</a></p></div>
-    <div class="gpf-legal-column"><h2>Contacto</h2><p><strong>Atencion a clientes</strong><br>Tel. <a href="tel:+52558175693">(55) 8175-693</a><br><a href="mailto:atencionclientes@principiafuturo.com.mx">atencionclientes@principiafuturo.com.mx</a></p><p><a href="https://www.condusef.gob.mx/" target="_blank" rel="noopener noreferrer">CONDUSEF</a></p></div>
+    <div class="gpf-legal-column gpf-legal-brand"><strong class="gpf-legal-brand-name">Grupo Principia Futuro</strong><p>Grupo Principia Futuro, S.A.P.I. de C.V., SOFOM, E.N.R.</p><p>Amores 28, Col. Del Valle, C.P. 03103, Ciudad de M&eacute;xico.</p><div class="gpf-legal-links"><a href="/aviso-de-privacidad/">Aviso de Privacidad</a><a href="/une/">UNE</a><a href="/buro-de-entidades-financieras/">Bur&oacute; de Entidades Financieras</a><a href="/informacion-legal/">Informaci&oacute;n legal</a></div></div>
+    <div class="gpf-legal-column"><h2>Atenci&oacute;n a usuarios</h2><p><strong>UNE</strong><br>Tel. <a href="tel:+52555876399">(55) 5876-399</a><br><a href="mailto:une@principiafuturo.com.mx">une@principiafuturo.com.mx</a></p></div>
+    <div class="gpf-legal-column"><h2>Contacto</h2><p><strong>Atenci&oacute;n a clientes</strong><br>Tel. <a href="tel:+52558175693">(55) 8175-693</a><br><a href="mailto:atencionclientes@principiafuturo.com.mx">atencionclientes@principiafuturo.com.mx</a></p><p><a href="https://www.condusef.gob.mx/" target="_blank" rel="noopener noreferrer">CONDUSEF</a></p></div>
   </div>
-  <div class="container gpf-footer-bottom"><p>La contratacion de productos financieros esta sujeta a requisitos, validacion de informacion, capacidad de pago, convenio aplicable y condiciones vigentes.</p></div>
+  <div class="container gpf-footer-bottom"><p>La contrataci&oacute;n de productos financieros est&aacute; sujeta a requisitos, validaci&oacute;n de informaci&oacute;n, capacidad de pago, convenio aplicable y condiciones vigentes.</p></div>
 `;
 
 document.querySelectorAll('a[aria-label="Aviso de privacidad"], a[href="#"]').forEach((link) => {
