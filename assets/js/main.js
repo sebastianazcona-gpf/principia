@@ -14,6 +14,105 @@ if (!document.getElementById(spacingOverrideId)) {
   document.head.appendChild(compactSpacing);
 }
 
+const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+const pageSeo = {
+  '/': {
+    title: 'Grupo Principia Futuro | SOFOM ENR en México',
+    description: 'SOFOM ENR mexicana enfocada en crédito de nómina, convenios institucionales, fondeo y administración responsable de cartera.',
+    label: 'Inicio'
+  },
+  '/quienes-somos': {
+    title: 'Quiénes somos | Grupo Principia Futuro',
+    description: 'Conoce a Grupo Principia Futuro, S.A.P.I. de C.V., SOFOM, E.N.R.: enfoque institucional, misión, visión, valores y operación responsable.',
+    label: 'Quiénes somos'
+  },
+  '/solicitar-credito': {
+    title: 'Orientación sobre crédito de nómina | Grupo Principia Futuro',
+    description: 'Conoce información general sobre crédito de nómina con GPF. Disponible para personas elegibles conforme a convenio vigente, análisis, documentación y capacidad de pago.',
+    label: 'Orientación sobre crédito'
+  },
+  '/convenios': {
+    title: 'Convenios de crédito vía nómina | Grupo Principia Futuro',
+    description: 'Información para empresas, instituciones y organismos públicos o privados que buscan explorar un convenio de crédito de nómina con GPF.',
+    label: 'Convenios'
+  },
+  '/fondeadores': {
+    title: 'Fondeadores y alianzas de fondeo | Grupo Principia Futuro',
+    description: 'Información institucional para fondeadores interesados en el modelo de GPF, cartera, crédito vía nómina, trazabilidad y administración responsable.',
+    label: 'Fondeadores'
+  },
+  '/contacto': {
+    title: 'Contacto | Grupo Principia Futuro',
+    description: 'Contacta a Grupo Principia Futuro para información sobre crédito de nómina, convenios institucionales, fondeo o colaboración con GPF.',
+    label: 'Contacto'
+  },
+  '/aviso-de-privacidad': {
+    title: 'Aviso de privacidad | Grupo Principia Futuro',
+    description: 'Consulta el aviso de privacidad de Grupo Principia Futuro, S.A.P.I. de C.V., SOFOM, E.N.R.',
+    label: 'Aviso de privacidad'
+  },
+  '/une': {
+    title: 'UNE | Grupo Principia Futuro',
+    description: 'Información de la Unidad Especializada de Atención a Usuarios de Grupo Principia Futuro.',
+    label: 'UNE'
+  },
+  '/buro-de-entidades-financieras': {
+    title: 'Buró de Entidades Financieras | Grupo Principia Futuro',
+    description: 'Información de Grupo Principia Futuro relacionada con el Buró de Entidades Financieras.',
+    label: 'Buró de Entidades Financieras'
+  },
+  '/informacion-legal': {
+    title: 'Información legal | Grupo Principia Futuro',
+    description: 'Información legal de Grupo Principia Futuro, S.A.P.I. de C.V., SOFOM, E.N.R.',
+    label: 'Información legal'
+  }
+};
+
+function setMeta(selector, attr, value) {
+  const element = document.head.querySelector(selector);
+  if (element) element.setAttribute(attr, value);
+}
+
+const seo = pageSeo[currentPath];
+if (seo) {
+  document.title = seo.title;
+  setMeta('meta[name="description"]', 'content', seo.description);
+  setMeta('meta[property="og:title"]', 'content', seo.title);
+  setMeta('meta[property="og:description"]', 'content', seo.description);
+}
+
+function addBreadcrumbSchema() {
+  if (document.getElementById('gpf-breadcrumb-schema')) return;
+  if (!seo || currentPath === '/') return;
+
+  const origin = window.location.origin;
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Inicio',
+        item: `${origin}/`
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: seo.label,
+        item: `${origin}${currentPath}/`
+      }
+    ]
+  };
+
+  const script = document.createElement('script');
+  script.id = 'gpf-breadcrumb-schema';
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(breadcrumb);
+  document.head.appendChild(script);
+}
+addBreadcrumbSchema();
+
 const siteHeader = document.querySelector('header');
 const siteNav = document.querySelector('header .nav');
 const mainMenu = document.querySelector('header .menu');
@@ -46,21 +145,12 @@ if (siteHeader && siteNav && mainMenu && !document.querySelector('.menu-toggle')
   };
 
   menuToggle.addEventListener('click', () => {
-    if (mainMenu.classList.contains('is-open')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
+    if (mainMenu.classList.contains('is-open')) closeMenu();
+    else openMenu();
   });
 
-  mainMenu.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', closeMenu);
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closeMenu();
-  });
-
+  mainMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeMenu(); });
   document.addEventListener('click', (event) => {
     if (!mainMenu.classList.contains('is-open')) return;
     if (siteHeader.contains(event.target)) return;
@@ -80,7 +170,6 @@ if (!reduceMotion) {
       }
     });
   }, { threshold: 0.12 });
-
   revealEls.forEach((el) => observer.observe(el));
 
   const ambientEls = document.querySelectorAll('.ambient');
@@ -92,7 +181,6 @@ if (!reduceMotion) {
       el.style.transform = `translate3d(${direction * y * depth * 0.28}px, ${y * depth}px, 0)`;
     });
   };
-
   if (ambientEls.length) {
     moveAmbient();
     window.addEventListener('scroll', moveAmbient, { passive: true });
@@ -107,12 +195,58 @@ if (!reduceMotion) {
       const rotateX = ((y / rect.height) - 0.5) * -4;
       card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
     });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
   });
 }
+
+const copyReplacements = [
+  ['Solicitar crédito vía nómina', 'Orientación sobre crédito de nómina'],
+  ['Solicitar crédito', 'Orientación sobre crédito'],
+  ['solicitar crédito', 'recibir orientación sobre crédito'],
+  ['Solicitar información no significa aprobación automática.', 'Solicitar orientación no significa aprobación automática.'],
+  ['Tipo de cliente', 'Producto de interés'],
+  ['Trabajador', 'Crédito de nómina'],
+  ['GPF existe para acompañar decisiones financieras importantes sin promesas fáciles ni atajos comerciales. Su valor está en operar con claridad, ordenar procesos, cuidar la trazabilidad y construir relaciones sostenibles.', 'GPF existe para estar presente cuando las personas necesitan respaldo para avanzar. En momentos importantes, especiales o urgentes, busca ofrecer soluciones financieras claras, responsables y cercanas, acompañando cada decisión con orden, transparencia y confianza.'],
+  ['Lectura B2C', 'Para personas'],
+  ['Para personas, GPF debe sentirse como respaldo claro, serio y cercano en decisiones financieras importantes.', 'GPF busca acompañar a personas que necesitan respaldo financiero en momentos importantes, con información clara, atención cercana y procesos responsables.'],
+  ['Lectura B2B', 'Para instituciones, aliados y fondeadores'],
+  ['Para instituciones, aliados y fondeadores, GPF debe proyectar estructura, control, cumplimiento y capacidad operativa.', 'GPF proyecta una operación financiera enfocada en orden, cumplimiento, trazabilidad y administración responsable de cartera.'],
+  ['Administración responsable de cartera, trazabilidad e información útil.', 'Administración de cartera con seguimiento, control operativo e información útil.'],
+  ['GPF debe comunicar con sentido humano hacia personas y con solidez institucional hacia convenios, aliados y fondeadores.', ''],
+  ['Qué debe quedar claro desde el inicio', 'Construyamos un convenio con reglas claras'],
+  ['El convenio no implica aprobación automática ni disponibilidad para toda la plantilla. La operación depende del perfil del trabajador, capacidad de descuento, políticas del producto, documentación, validaciones y condiciones vigentes.', 'Cada convenio parte de una conversación institucional para entender el perfil de la organización, la población elegible y las necesidades de sus colaboradores. GPF puede estructurar una solución de crédito por descuento en nómina bajo criterios de elegibilidad, capacidad de pago, documentación, validaciones y condiciones vigentes.'],
+  ['La entidad define la población autorizada y el marco de colaboración.', 'La institución define el alcance del convenio y la población autorizada.'],
+  ['GPF estructura y administra la solución de crédito correspondiente.', 'GPF estructura y administra la solución financiera correspondiente.'],
+  ['La originación puede apoyarse en canales y aliados comerciales autorizados.', 'La operación puede apoyarse en canales autorizados para orientación, originación y seguimiento.'],
+  ['Antes de comunicar el producto a trabajadores, el convenio debe revisar viabilidad, reglas de descuento, documentación, tratamiento de datos y responsabilidades operativas.', ''],
+  ['Qué puede revisar un fondeador', 'Información para evaluar una relación de fondeo'],
+  ['La información para fondeo debe enfocarse en datos, operación y control, no en promesas comerciales.', 'GPF busca construir relaciones de fondeo con información clara, trazabilidad operativa y administración responsable de cartera. La revisión puede partir de datos históricos, convenios, perfil de crédito y procesos de originación, cesión, cobranza y seguimiento.'],
+  ['Convenios activos o potenciales y concentración geográfica.', 'Cartera histórica, monto colocado, créditos dispersados y comportamiento por convenio.'],
+  ['Perfil de crédito, plazos, periodicidad, tasas y CAT por convenio.', 'Concentración por entidad, tipo de dependencia, plazo, periodicidad, tasa y CAT.'],
+  ['Proceso de originación, validación, cesión, cobranza y seguimiento.', 'Procesos de originación, validación, formalización, cesión, cobranza y seguimiento.'],
+  ['Comportamiento histórico y brechas de información pendientes.', 'Información disponible, brechas de datos y próximos elementos para fortalecer el análisis.']
+];
+
+copyReplacements.forEach(([from, to]) => {
+  document.querySelectorAll('p, span, li, h1, h2, h3, h4, option, label, a, button').forEach((element) => {
+    if (element.textContent && element.textContent.includes(from)) {
+      if (to === '' && element.textContent.trim() === from) {
+        element.remove();
+        return;
+      }
+      element.textContent = element.textContent.replaceAll(from, to).trim();
+    }
+  });
+});
+
+const pensionadoOption = Array.from(document.querySelectorAll('option')).find((option) => option.textContent.trim().toLowerCase() === 'pensionado');
+if (pensionadoOption) pensionadoOption.remove();
+
+document.querySelectorAll('.privacy a').forEach((link) => {
+  link.href = '/aviso-de-privacidad/';
+});
+
+document.querySelectorAll('.role-band, .pillars-section').forEach((section) => section.remove());
 
 const interes = document.getElementById('interes');
 const tipoCliente = document.getElementById('tipoCliente');
@@ -124,7 +258,6 @@ const formStatus = document.getElementById('formStatus');
 
 function resetConditionalFields() {
   if (!clienteField || !convenioField || !tipoCliente || !tipoConvenio) return;
-
   clienteField.classList.remove('active');
   convenioField.classList.remove('active');
   tipoCliente.required = false;
@@ -135,28 +268,22 @@ function resetConditionalFields() {
 
 function updateConditionalFields() {
   if (!interes || !clienteField || !convenioField || !tipoCliente || !tipoConvenio) return;
-
   resetConditionalFields();
-
   if (interes.value === 'Ser cliente') {
     clienteField.classList.add('active');
     tipoCliente.required = true;
   }
-
   if (interes.value === 'Convenio') {
     convenioField.classList.add('active');
     tipoConvenio.required = true;
   }
 }
 
-if (interes) {
-  interes.addEventListener('change', updateConditionalFields);
-}
+if (interes) interes.addEventListener('change', updateConditionalFields);
 
 document.querySelectorAll('[data-interest]').forEach((button) => {
   button.addEventListener('click', () => {
     if (!interes) return;
-
     const value = button.getAttribute('data-interest');
     window.setTimeout(() => {
       interes.value = value;
@@ -170,112 +297,16 @@ if (leadForm) {
   leadForm.addEventListener('submit', (event) => {
     event.preventDefault();
     updateConditionalFields();
-
     if (!leadForm.checkValidity()) {
       leadForm.reportValidity();
       return;
     }
-
     if (formStatus) {
+      formStatus.textContent = 'Gracias. Recibimos tu información para orientar el seguimiento correspondiente. La atención no implica aprobación ni autorización de crédito.';
       formStatus.classList.add('active');
     }
   });
 }
-
-const copyReplacements = [
-  {
-    from: 'GPF existe para acompañar decisiones financieras importantes sin promesas fáciles ni atajos comerciales. Su valor está en operar con claridad, ordenar procesos, cuidar la trazabilidad y construir relaciones sostenibles.',
-    to: 'GPF existe para estar presente cuando las personas necesitan respaldo para avanzar. En momentos importantes, especiales o urgentes, busca ofrecer soluciones financieras claras, responsables y cercanas, acompañando cada decisión con orden, transparencia y confianza.'
-  },
-  {
-    from: 'Lectura B2C',
-    to: 'Para personas'
-  },
-  {
-    from: 'Para personas, GPF debe sentirse como respaldo claro, serio y cercano en decisiones financieras importantes.',
-    to: 'GPF busca acompañar a personas que necesitan respaldo financiero en momentos importantes, con información clara, atención cercana y procesos responsables.'
-  },
-  {
-    from: 'Lectura B2B',
-    to: 'Para instituciones, aliados y fondeadores'
-  },
-  {
-    from: 'Para instituciones, aliados y fondeadores, GPF debe proyectar estructura, control, cumplimiento y capacidad operativa.',
-    to: 'GPF proyecta una operación financiera enfocada en orden, cumplimiento, trazabilidad y administración responsable de cartera.'
-  },
-  {
-    from: 'Administración responsable de cartera, trazabilidad e información útil.',
-    to: 'Administración de cartera con seguimiento, control operativo e información útil.'
-  },
-  {
-    from: 'GPF debe comunicar con sentido humano hacia personas y con solidez institucional hacia convenios, aliados y fondeadores.',
-    to: ''
-  },
-  {
-    from: 'Qué debe quedar claro desde el inicio',
-    to: 'Construyamos un convenio con reglas claras'
-  },
-  {
-    from: 'El convenio no implica aprobación automática ni disponibilidad para toda la plantilla. La operación depende del perfil del trabajador, capacidad de descuento, políticas del producto, documentación, validaciones y condiciones vigentes.',
-    to: 'Cada convenio parte de una conversación institucional para entender el perfil de la organización, la población elegible y las necesidades de sus colaboradores. GPF puede estructurar una solución de crédito por descuento en nómina bajo criterios de elegibilidad, capacidad de pago, documentación, validaciones y condiciones vigentes.'
-  },
-  {
-    from: 'La entidad define la población autorizada y el marco de colaboración.',
-    to: 'La institución define el alcance del convenio y la población autorizada.'
-  },
-  {
-    from: 'GPF estructura y administra la solución de crédito correspondiente.',
-    to: 'GPF estructura y administra la solución financiera correspondiente.'
-  },
-  {
-    from: 'La originación puede apoyarse en canales y aliados comerciales autorizados.',
-    to: 'La operación puede apoyarse en canales autorizados para orientación, originación y seguimiento.'
-  },
-  {
-    from: 'Antes de comunicar el producto a trabajadores, el convenio debe revisar viabilidad, reglas de descuento, documentación, tratamiento de datos y responsabilidades operativas.',
-    to: ''
-  },
-  {
-    from: 'Qué puede revisar un fondeador',
-    to: 'Información para evaluar una relación de fondeo'
-  },
-  {
-    from: 'La información para fondeo debe enfocarse en datos, operación y control, no en promesas comerciales.',
-    to: 'GPF busca construir relaciones de fondeo con información clara, trazabilidad operativa y administración responsable de cartera. La revisión puede partir de datos históricos, convenios, perfil de crédito y procesos de originación, cesión, cobranza y seguimiento.'
-  },
-  {
-    from: 'Convenios activos o potenciales y concentración geográfica.',
-    to: 'Cartera histórica, monto colocado, créditos dispersados y comportamiento por convenio.'
-  },
-  {
-    from: 'Perfil de crédito, plazos, periodicidad, tasas y CAT por convenio.',
-    to: 'Concentración por entidad, tipo de dependencia, plazo, periodicidad, tasa y CAT.'
-  },
-  {
-    from: 'Proceso de originación, validación, cesión, cobranza y seguimiento.',
-    to: 'Procesos de originación, validación, formalización, cesión, cobranza y seguimiento.'
-  },
-  {
-    from: 'Comportamiento histórico y brechas de información pendientes.',
-    to: 'Información disponible, brechas de datos y próximos elementos para fortalecer el análisis.'
-  }
-];
-
-copyReplacements.forEach(({ from, to }) => {
-  document.querySelectorAll('p, span, li, h1, h2, h3, h4').forEach((element) => {
-    if (element.textContent && element.textContent.includes(from)) {
-      if (to === '' && element.textContent.trim() === from) {
-        element.remove();
-        return;
-      }
-      element.textContent = element.textContent.replace(from, to).trim();
-    }
-  });
-});
-
-document.querySelectorAll('.role-band, .pillars-section').forEach((section) => {
-  section.remove();
-});
 
 const mvVisualStylesId = 'gpf-mission-vision-visuals';
 if (!document.getElementById(mvVisualStylesId)) {
@@ -292,18 +323,10 @@ if (!document.getElementById(mvVisualStylesId)) {
     .mv-node{position:absolute;z-index:4;display:inline-flex;align-items:center;justify-content:center;min-width:112px;min-height:38px;padding:8px 13px;border-radius:999px;background:rgba(255,255,255,.95);color:var(--azul);font-size:.78rem;font-weight:900;box-shadow:0 14px 30px rgba(0,0,0,.14);animation:mvNodeFloat 5.4s ease-in-out infinite}
     .mv-node:nth-child(2){top:22px;left:50%;transform:translateX(-50%);animation-delay:.1s}.mv-node:nth-child(3){right:20px;top:50%;transform:translateY(-50%);animation-delay:.6s}.mv-node:nth-child(4){bottom:22px;left:50%;transform:translateX(-50%);animation-delay:1.1s}.mv-node:nth-child(5){left:20px;top:50%;transform:translateY(-50%);animation-delay:1.6s}
     .mission-line{position:absolute;z-index:2;left:50%;top:50%;width:40%;height:1px;background:linear-gradient(90deg,rgba(14,140,165,.85),transparent);transform-origin:left center;opacity:.65;animation:mvLineGlow 4s ease-in-out infinite}.mission-line.line-1{transform:rotate(-90deg)}.mission-line.line-2{transform:rotate(0deg)}.mission-line.line-3{transform:rotate(90deg)}.mission-line.line-4{transform:rotate(180deg)}
-    .vision-road{display:grid;align-items:center;padding:26px 18px;min-height:228px}
-    .vision-road:before{content:"";position:absolute;left:32px;right:32px;top:50%;height:3px;border-radius:999px;background:rgba(20,37,68,.12)}
-    .vision-road:after{content:"";position:absolute;left:32px;top:50%;height:3px;width:calc(100% - 64px);border-radius:999px;background:linear-gradient(90deg,var(--turquesa),rgba(20,37,68,.86));transform-origin:left center;animation:mvProgress 6.5s ease-in-out infinite}
-    .vision-steps{position:relative;z-index:3;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;width:100%}
-    .vision-step{display:grid;gap:9px;justify-items:center;text-align:center;color:var(--azul);font-size:.74rem;font-weight:900;line-height:1.18;animation:mvStepRise 6.5s ease-in-out infinite}.vision-step span{width:34px;height:34px;border-radius:999px;display:grid;place-items:center;background:#fff;border:2px solid rgba(14,140,165,.24);box-shadow:0 10px 24px rgba(20,37,68,.1);color:var(--turquesa)}
+    .vision-road{display:grid;align-items:center;padding:26px 18px;min-height:228px}.vision-road:before{content:"";position:absolute;left:32px;right:32px;top:50%;height:3px;border-radius:999px;background:rgba(20,37,68,.12)}.vision-road:after{content:"";position:absolute;left:32px;top:50%;height:3px;width:calc(100% - 64px);border-radius:999px;background:linear-gradient(90deg,var(--turquesa),rgba(20,37,68,.86));transform-origin:left center;animation:mvProgress 6.5s ease-in-out infinite}
+    .vision-steps{position:relative;z-index:3;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;width:100%}.vision-step{display:grid;gap:9px;justify-items:center;text-align:center;color:var(--azul);font-size:.74rem;font-weight:900;line-height:1.18;animation:mvStepRise 6.5s ease-in-out infinite}.vision-step span{width:34px;height:34px;border-radius:999px;display:grid;place-items:center;background:#fff;border:2px solid rgba(14,140,165,.24);box-shadow:0 10px 24px rgba(20,37,68,.1);color:var(--turquesa)}
     .vision-step:nth-child(1){animation-delay:.1s}.vision-step:nth-child(2){animation-delay:.35s}.vision-step:nth-child(3){animation-delay:.6s}.vision-step:nth-child(4){animation-delay:.85s}.vision-step:nth-child(5){animation-delay:1.1s}
-    @keyframes mvPulse{0%,100%{transform:scale(1);opacity:.75}50%{transform:scale(1.05);opacity:.38}}
-    @keyframes mvCenterFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-    @keyframes mvNodeFloat{0%,100%{filter:brightness(1)}50%{filter:brightness(1.08)}}
-    @keyframes mvLineGlow{0%,100%{opacity:.35}50%{opacity:.92}}
-    @keyframes mvProgress{0%{transform:scaleX(.08);opacity:.54}55%,100%{transform:scaleX(1);opacity:.92}}
-    @keyframes mvStepRise{0%,20%{transform:translateY(8px);opacity:.62}45%,100%{transform:translateY(0);opacity:1}}
+    @keyframes mvPulse{0%,100%{transform:scale(1);opacity:.75}50%{transform:scale(1.05);opacity:.38}}@keyframes mvCenterFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}@keyframes mvNodeFloat{0%,100%{filter:brightness(1)}50%{filter:brightness(1.08)}}@keyframes mvLineGlow{0%,100%{opacity:.35}50%{opacity:.92}}@keyframes mvProgress{0%{transform:scaleX(.08);opacity:.54}55%,100%{transform:scaleX(1);opacity:.92}}@keyframes mvStepRise{0%,20%{transform:translateY(8px);opacity:.62}45%,100%{transform:translateY(0);opacity:1}}
     @media(max-width:720px){.mv-card .mv-visual{min-height:250px}.mv-node{min-width:98px;font-size:.72rem}.vision-steps{grid-template-columns:1fr;gap:8px}.vision-road:before,.vision-road:after{display:none}.vision-step{grid-template-columns:34px 1fr;justify-items:start;text-align:left;align-items:center}.vision-road{padding:22px}}
     @media(prefers-reduced-motion:reduce){.mission-map:before,.mission-map:after,.mv-center,.mv-node,.mission-line,.vision-road:after,.vision-step{animation:none!important}}
   `;
@@ -317,11 +340,7 @@ if (missionCard && !missionCard.querySelector('.mission-map')) {
   missionCard.insertAdjacentHTML('beforeend', `
     <div class="mv-visual mission-map" aria-label="Esquema de misión: personas al centro con respaldo, claridad, confianza y tranquilidad">
       <span class="mission-line line-1" aria-hidden="true"></span><span class="mission-line line-2" aria-hidden="true"></span><span class="mission-line line-3" aria-hidden="true"></span><span class="mission-line line-4" aria-hidden="true"></span>
-      <div class="mv-center">Personas</div>
-      <span class="mv-node">Respaldo</span>
-      <span class="mv-node">Claridad</span>
-      <span class="mv-node">Confianza</span>
-      <span class="mv-node">Tranquilidad</span>
+      <div class="mv-center">Personas</div><span class="mv-node">Respaldo</span><span class="mv-node">Claridad</span><span class="mv-node">Confianza</span><span class="mv-node">Tranquilidad</span>
     </div>
   `);
 }
@@ -329,13 +348,7 @@ if (missionCard && !missionCard.querySelector('.mission-map')) {
 if (visionCard && !visionCard.querySelector('.vision-road')) {
   visionCard.insertAdjacentHTML('beforeend', `
     <div class="mv-visual vision-road" aria-label="Esquema de visión: tecnología, responsabilidad, cercanía, confianza y reconocimiento institucional">
-      <div class="vision-steps">
-        <div class="vision-step"><span>01</span><strong>Tecnología</strong></div>
-        <div class="vision-step"><span>02</span><strong>Responsabilidad</strong></div>
-        <div class="vision-step"><span>03</span><strong>Cercanía</strong></div>
-        <div class="vision-step"><span>04</span><strong>Confianza</strong></div>
-        <div class="vision-step"><span>05</span><strong>Reconocimiento institucional</strong></div>
-      </div>
+      <div class="vision-steps"><div class="vision-step"><span>01</span><strong>Tecnología</strong></div><div class="vision-step"><span>02</span><strong>Responsabilidad</strong></div><div class="vision-step"><span>03</span><strong>Cercanía</strong></div><div class="vision-step"><span>04</span><strong>Confianza</strong></div><div class="vision-step"><span>05</span><strong>Reconocimiento institucional</strong></div></div>
     </div>
   `);
 }
