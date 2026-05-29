@@ -181,3 +181,12 @@ if (leadForm) {
     }
   });
 }
+
+const legalFooterScriptId = 'gpf-legal-footer-script';
+if (!document.getElementById(legalFooterScriptId)) {
+  const legalFooterScript = document.createElement('script');
+  legalFooterScript.id = legalFooterScriptId;
+  legalFooterScript.src = '/assets/js/legal-footer.js';
+  legalFooterScript.defer = true;
+  document.body.appendChild(legalFooterScript);
+}
