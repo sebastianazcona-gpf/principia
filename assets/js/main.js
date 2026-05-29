@@ -210,13 +210,41 @@ const copyReplacements = [
   {
     from: 'GPF debe comunicar con sentido humano hacia personas y con solidez institucional hacia convenios, aliados y fondeadores.',
     to: ''
+  },
+  {
+    from: 'Qué debe quedar claro desde el inicio',
+    to: 'Construyamos un convenio con reglas claras'
+  },
+  {
+    from: 'El convenio no implica aprobación automática ni disponibilidad para toda la plantilla. La operación depende del perfil del trabajador, capacidad de descuento, políticas del producto, documentación, validaciones y condiciones vigentes.',
+    to: 'Cada convenio parte de una conversación institucional para entender el perfil de la organización, la población elegible y las necesidades de sus colaboradores. GPF puede estructurar una solución de crédito por descuento en nómina bajo criterios de elegibilidad, capacidad de pago, documentación, validaciones y condiciones vigentes.'
+  },
+  {
+    from: 'La entidad define la población autorizada y el marco de colaboración.',
+    to: 'La institución define el alcance del convenio y la población autorizada.'
+  },
+  {
+    from: 'GPF estructura y administra la solución de crédito correspondiente.',
+    to: 'GPF estructura y administra la solución financiera correspondiente.'
+  },
+  {
+    from: 'La originación puede apoyarse en canales y aliados comerciales autorizados.',
+    to: 'La operación puede apoyarse en canales autorizados para orientación, originación y seguimiento.'
+  },
+  {
+    from: 'Antes de comunicar el producto a trabajadores, el convenio debe revisar viabilidad, reglas de descuento, documentación, tratamiento de datos y responsabilidades operativas.',
+    to: ''
   }
 ];
 
 copyReplacements.forEach(({ from, to }) => {
   document.querySelectorAll('p, span, li, h1, h2, h3, h4').forEach((element) => {
     if (element.textContent && element.textContent.includes(from)) {
-      element.textContent = element.textContent.replace(from, to);
+      if (to === '' && element.textContent.trim() === from) {
+        element.remove();
+        return;
+      }
+      element.textContent = element.textContent.replace(from, to).trim();
     }
   });
 });
