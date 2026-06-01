@@ -54,7 +54,6 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 }
 
 document.querySelectorAll('.privacy a').forEach(a => { a.href = '/aviso-de-privacidad/'; });
-document.querySelectorAll('.role-band,.pillars-section').forEach(section => section.remove());
 
 const interes = document.getElementById('interes');
 const tipoCliente = document.getElementById('tipoCliente');
