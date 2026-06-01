@@ -1,44 +1,6 @@
-const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
-
 const compactStyle = document.createElement('style');
 compactStyle.textContent = `@media (min-width:981px){section{padding-top:64px;padding-bottom:64px}.hero{padding-top:84px;padding-bottom:56px}.page-hero{padding-top:84px;padding-bottom:52px}.section-head{margin-bottom:30px}}`;
 document.head.appendChild(compactStyle);
-
-const pageSeo = {
-  '/': ['Grupo Principia Futuro | SOFOM ENR en México','SOFOM ENR mexicana enfocada en crédito de nómina, convenios institucionales, fondeo y administración responsable de cartera.','Inicio'],
-  '/quienes-somos': ['Quiénes somos | Grupo Principia Futuro','Conoce a Grupo Principia Futuro, S.A.P.I. de C.V., SOFOM, E.N.R.: enfoque institucional, misión, visión, valores y operación responsable.','Quiénes somos'],
-  '/solicitar-credito': ['Orientación sobre crédito de nómina | Grupo Principia Futuro','Conoce información general sobre crédito de nómina con GPF. Disponible para personas elegibles conforme a convenio vigente, análisis, documentación y capacidad de pago.','Orientación sobre crédito'],
-  '/convenios': ['Convenios de crédito vía nómina | Grupo Principia Futuro','Información para empresas, instituciones y organismos públicos o privados que buscan explorar un convenio de crédito de nómina con GPF.','Convenios'],
-  '/fondeadores': ['Fondeadores y alianzas de fondeo | Grupo Principia Futuro','Información institucional para fondeadores interesados en el modelo de GPF, cartera, crédito vía nómina, trazabilidad y administración responsable.','Fondeadores'],
-  '/contacto': ['Contacto | Grupo Principia Futuro','Contacta a Grupo Principia Futuro para información sobre crédito de nómina, convenios institucionales, fondeo o colaboración con GPF.','Contacto'],
-  '/aviso-de-privacidad': ['Aviso de privacidad | Grupo Principia Futuro','Consulta el aviso de privacidad de Grupo Principia Futuro, S.A.P.I. de C.V., SOFOM, E.N.R.','Aviso de privacidad'],
-  '/une': ['UNE | Grupo Principia Futuro','Información de la Unidad Especializada de Atención a Usuarios de Grupo Principia Futuro.','UNE'],
-  '/buro-de-entidades-financieras': ['Buró de Entidades Financieras | Grupo Principia Futuro','Información de Grupo Principia Futuro relacionada con el Buró de Entidades Financieras.','Buró de Entidades Financieras'],
-  '/informacion-legal': ['Información legal | Grupo Principia Futuro','Información legal de Grupo Principia Futuro, S.A.P.I. de C.V., SOFOM, E.N.R.','Información legal']
-};
-
-const seo = pageSeo[currentPath];
-if (seo) {
-  document.title = seo[0];
-  document.querySelector('meta[name="description"]')?.setAttribute('content', seo[1]);
-  document.querySelector('meta[property="og:title"]')?.setAttribute('content', seo[0]);
-  document.querySelector('meta[property="og:description"]')?.setAttribute('content', seo[1]);
-
-  if (currentPath !== '/' && !document.getElementById('gpf-breadcrumb-schema')) {
-    const script = document.createElement('script');
-    script.id = 'gpf-breadcrumb-schema';
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify({
-      '@context':'https://schema.org',
-      '@type':'BreadcrumbList',
-      itemListElement:[
-        {'@type':'ListItem',position:1,name:'Inicio',item:`${location.origin}/`},
-        {'@type':'ListItem',position:2,name:seo[2],item:`${location.origin}${currentPath}/`}
-      ]
-    });
-    document.head.appendChild(script);
-  }
-}
 
 const siteHeader = document.querySelector('header');
 const siteNav = document.querySelector('header .nav');
