@@ -96,21 +96,6 @@ leadForm?.addEventListener('submit', e => {
   }
 });
 
-const mvStyle = document.createElement('style');
-mvStyle.textContent = `.mv-card{display:flex;flex-direction:column}.mv-card .mv-visual{position:relative;margin-top:30px;min-height:228px;border-radius:26px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);overflow:hidden}.mission-map{display:grid;place-items:center}.mission-map:before,.mission-map:after{content:"";position:absolute;border-radius:999px;border:1px solid rgba(255,255,255,.14);inset:24px}.mission-map:after{inset:56px;border-color:rgba(14,140,165,.42)}.mv-center{position:relative;z-index:3;width:98px;height:98px;border-radius:34px;display:grid;place-items:center;background:var(--turquesa);color:#fff;font-weight:900}.mv-node{position:absolute;z-index:4;display:inline-flex;align-items:center;justify-content:center;min-width:112px;min-height:38px;padding:8px 13px;border-radius:999px;background:rgba(255,255,255,.95);color:var(--azul);font-size:.78rem;font-weight:900}.mv-node:nth-child(2){top:22px;left:50%;transform:translateX(-50%)}.mv-node:nth-child(3){right:20px;top:50%;transform:translateY(-50%)}.mv-node:nth-child(4){bottom:22px;left:50%;transform:translateX(-50%)}.mv-node:nth-child(5){left:20px;top:50%;transform:translateY(-50%)}.vision-road{display:grid;align-items:center;padding:26px 18px;min-height:228px}.vision-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.vision-step{display:grid;gap:9px;justify-items:center;text-align:center;color:var(--azul);font-size:.74rem;font-weight:900}.vision-step span{width:34px;height:34px;border-radius:999px;display:grid;place-items:center;background:#fff;border:2px solid rgba(14,140,165,.24);color:var(--turquesa)}`;
-document.head.appendChild(mvStyle);
-
-const missionCard = Array.from(document.querySelectorAll('.mv-card')).find(card => card.querySelector('h3')?.textContent.trim().toLowerCase() === 'misión');
-const visionCard = Array.from(document.querySelectorAll('.mv-card')).find(card => card.querySelector('h3')?.textContent.trim().toLowerCase() === 'visión');
-
-if (missionCard && !missionCard.querySelector('.mission-map')) {
-  missionCard.insertAdjacentHTML('beforeend','<div class="mv-visual mission-map"><div class="mv-center">Personas</div><span class="mv-node">Respaldo</span><span class="mv-node">Claridad</span><span class="mv-node">Confianza</span><span class="mv-node">Tranquilidad</span></div>');
-}
-
-if (visionCard && !visionCard.querySelector('.vision-road')) {
-  visionCard.insertAdjacentHTML('beforeend','<div class="mv-visual vision-road"><div class="vision-steps"><div class="vision-step"><span>01</span><strong>Tecnología</strong></div><div class="vision-step"><span>02</span><strong>Responsabilidad</strong></div><div class="vision-step"><span>03</span><strong>Cercanía</strong></div><div class="vision-step"><span>04</span><strong>Confianza</strong></div><div class="vision-step"><span>05</span><strong>Reconocimiento institucional</strong></div></div></div>');
-}
-
 if (!document.getElementById('gpf-legal-footer-script')) {
   const script = document.createElement('script');
   script.id = 'gpf-legal-footer-script';
