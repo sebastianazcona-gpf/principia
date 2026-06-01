@@ -91,41 +91,6 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   });
 }
 
-const replacements = [
-  ['Solicitar crédito vía nómina','Orientación sobre crédito de nómina'],
-  ['Solicitar crédito','Orientación sobre crédito'],
-  ['solicitar crédito','recibir orientación sobre crédito'],
-  ['Solicitar información no significa aprobación automática.','Solicitar orientación no significa aprobación automática.'],
-  ['Tipo de cliente','Producto de interés'],
-  ['Trabajador','Crédito de nómina'],
-  ['GPF existe para acompañar decisiones financieras importantes sin promesas fáciles ni atajos comerciales. Su valor está en operar con claridad, ordenar procesos, cuidar la trazabilidad y construir relaciones sostenibles.','GPF existe para estar presente cuando las personas necesitan respaldo para avanzar. En momentos importantes, especiales o urgentes, busca ofrecer soluciones financieras claras, responsables y cercanas, acompañando cada decisión con orden, transparencia y confianza.'],
-  ['Lectura B2C','Para personas'],
-  ['Para personas, GPF debe sentirse como respaldo claro, serio y cercano en decisiones financieras importantes.','GPF busca acompañar a personas que necesitan respaldo financiero en momentos importantes, con información clara, atención cercana y procesos responsables.'],
-  ['Lectura B2B','Para instituciones, aliados y fondeadores'],
-  ['Para instituciones, aliados y fondeadores, GPF debe proyectar estructura, control, cumplimiento y capacidad operativa.','GPF proyecta una operación financiera enfocada en orden, cumplimiento, trazabilidad y administración responsable de cartera.'],
-  ['Administración responsable de cartera, trazabilidad e información útil.','Administración de cartera con seguimiento, control operativo e información útil.'],
-  ['GPF debe comunicar con sentido humano hacia personas y con solidez institucional hacia convenios, aliados y fondeadores.',''],
-  ['Qué puede revisar un fondeador','Información para evaluar una relación de fondeo'],
-  ['La información para fondeo debe enfocarse en datos, operación y control, no en promesas comerciales.','GPF busca construir relaciones de fondeo con información clara, trazabilidad operativa y administración responsable de cartera. La revisión puede partir de datos históricos, convenios, perfil de crédito y procesos de originación, cesión, cobranza y seguimiento.'],
-  ['Convenios activos o potenciales y concentración geográfica.','Cartera histórica, monto colocado, créditos dispersados y comportamiento por convenio.'],
-  ['Perfil de crédito, plazos, periodicidad, tasas y CAT por convenio.','Concentración por entidad, tipo de dependencia, plazo, periodicidad, tasa y CAT.'],
-  ['Proceso de originación, validación, cesión, cobranza y seguimiento.','Procesos de originación, validación, formalización, cesión, cobranza y seguimiento.'],
-  ['Comportamiento histórico y brechas de información pendientes.','Información disponible, brechas de datos y próximos elementos para fortalecer el análisis.']
-];
-
-replacements.forEach(([from,to]) => {
-  document.querySelectorAll('p,span,li,h1,h2,h3,h4,option,label,a,button').forEach(el => {
-    if(el.textContent?.includes(from)){
-      if(to === '' && el.textContent.trim() === from) el.remove();
-      else el.textContent = el.textContent.replaceAll(from,to).trim();
-    }
-  });
-});
-
-document.querySelectorAll('option').forEach(option => {
-  if(option.textContent.trim().toLowerCase() === 'pensionado') option.remove();
-});
-
 document.querySelectorAll('.privacy a').forEach(a => { a.href = '/aviso-de-privacidad/'; });
 document.querySelectorAll('.role-band,.pillars-section').forEach(section => section.remove());
 
