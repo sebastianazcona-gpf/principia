@@ -41,6 +41,22 @@ if (currentPath === '/fondeadores/') {
   const heroPanel = hero?.querySelector('.hero-panel');
   heroPanel?.setAttribute('aria-label', 'Esquema animado de relación entre GPF y aliados financieros');
   heroPanel?.querySelector('.eyebrow') && (heroPanel.querySelector('.eyebrow').textContent = 'Red institucional');
+
+  const firstInfoGrid = document.querySelector('main section:nth-of-type(2) .info-grid');
+  const darkCard = firstInfoGrid?.querySelector('.info-card.dark');
+  const lightCard = firstInfoGrid?.querySelector('.info-card:not(.dark)');
+
+  darkCard?.querySelector('.eyebrow') && (darkCard.querySelector('.eyebrow').textContent = 'Enfoque institucional');
+  darkCard?.querySelector('h2') && (darkCard.querySelector('h2').textContent = 'El fondeo debe sostener colocación responsable, cartera sana y administración disciplinada.');
+  darkCard?.querySelector('p') && (darkCard.querySelector('p').textContent = 'Una relación financiera sólida requiere más que capacidad de colocación. Requiere información verificable, reglas claras de originación, estructura de cobranza, seguimiento operativo, cumplimiento y administración responsable de cartera.');
+
+  lightCard?.querySelector('h3') && (lightCard.querySelector('h3').textContent = 'Qué evalúa un aliado financiero');
+  lightCard?.querySelector('p') && (lightCard.querySelector('p').textContent = 'La revisión debe considerar producto, estructura de cobro, calidad de información, reputación, gobierno corporativo y mecanismos de respaldo disponibles.');
+
+  const firstInfoList = lightCard?.querySelector('.bullet-list');
+  if (firstInfoList) {
+    firstInfoList.innerHTML = '<li>Estructura de cobranza, conciliación, seguimiento e incidencias.</li><li>Calidad de cartera, convenios vigentes, concentración, plazos y recurrencia.</li><li>Documentación, validaciones, reportes, controles y trazabilidad por operación.</li><li>Responsables, experiencia, cumplimiento, antecedentes y claridad en decisiones.</li>';
+  }
 }
 
 function removeParagraphByExactText(text) {
