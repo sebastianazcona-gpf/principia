@@ -39,3 +39,26 @@ if (window.location.pathname.replace(/\/$/, '') === '/convenios') {
   cleanup.textContent = '.convenio-map{display:none!important}';
   document.head.appendChild(cleanup);
 }
+
+if (window.location.pathname.replace(/\/$/, '') === '/contacto') {
+  const metaDescription = document.querySelector('meta[name="description"]');
+  if (metaDescription) metaDescription.setAttribute('content', 'Contacta a Grupo Principia Futuro para información sobre crédito de nómina, convenios institucionales, alianzas financieras o colaboración con GPF.');
+
+  const ogDescription = document.querySelector('meta[property="og:description"]');
+  if (ogDescription) ogDescription.setAttribute('content', 'Canaliza tu solicitud con GPF: orientación sobre crédito de nómina, convenios, alianzas financieras o colaboración institucional.');
+
+  const lead = document.querySelector('.page-hero .lead');
+  if (lead) lead.textContent = 'Utiliza esta página para solicitar información general sobre crédito de nómina, convenios institucionales, alianzas financieras o colaboración con GPF.';
+
+  const fundingOption = document.querySelector('#interes option[value="Fondeo"]');
+  if (fundingOption) {
+    fundingOption.value = 'Alianza financiera';
+    fundingOption.textContent = 'Alianza financiera';
+  }
+
+  document.querySelectorAll('.contact-side li').forEach((item) => {
+    if (item.textContent.trim().startsWith('Fondeo:')) {
+      item.textContent = 'Alianzas financieras: instituciones o aliados interesados en explorar una posible colaboración financiera con GPF.';
+    }
+  });
+}
