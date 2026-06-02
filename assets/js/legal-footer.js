@@ -34,6 +34,12 @@ document.querySelectorAll('a[aria-label="Aviso de privacidad"], a[href="#"]').fo
   if (text.includes('aviso de privacidad')) link.href = '/aviso-de-privacidad/';
 });
 
+document.querySelectorAll('a[href="/fondeadores/"]').forEach((link) => {
+  if (link.textContent.trim() === 'Fondeadores') {
+    link.textContent = 'Aliados financieros';
+  }
+});
+
 if (window.location.pathname.replace(/\/$/, '') === '/convenios') {
   const cleanup = document.createElement('style');
   cleanup.textContent = '.convenio-map{display:none!important}';
