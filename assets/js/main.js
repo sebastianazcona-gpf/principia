@@ -57,6 +57,15 @@ if (currentPath === '/fondeadores/') {
   if (firstInfoList) {
     firstInfoList.innerHTML = '<li>Estructura de cobranza, conciliación, seguimiento e incidencias.</li><li>Calidad de cartera, convenios vigentes, concentración, plazos y recurrencia.</li><li>Documentación, validaciones, reportes, controles y trazabilidad por operación.</li><li>Responsables, experiencia, cumplimiento, antecedentes y claridad en decisiones.</li>';
   }
+
+  const finalCta = document.querySelector('main section.cta .cta-box');
+  finalCta?.querySelector('h2') && (finalCta.querySelector('h2').textContent = 'Explora una alianza financiera con GPF.');
+  finalCta?.querySelector('p') && (finalCta.querySelector('p').textContent = 'Comparte tu perfil institucional para revisar si existe una posible ruta de colaboración financiera conforme al producto, criterios de riesgo, información disponible y estructura aplicable.');
+
+  const riskNote = document.querySelector('.risk-box p');
+  if (riskNote) {
+    riskNote.innerHTML = '<strong>Importante:</strong> esta página tiene fines exclusivamente informativos e institucionales. No constituye oferta pública de inversión, recomendación financiera, promesa de rendimiento ni garantía de resultado. Cualquier esquema de colaboración financiera deberá revisarse de forma privada con información legal, financiera, operativa y contractual vigente.';
+  }
 }
 
 function removeParagraphByExactText(text) {
