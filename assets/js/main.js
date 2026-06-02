@@ -10,6 +10,39 @@ document.querySelectorAll('header .menu a[href="/fondeadores/"]').forEach((link)
   }
 });
 
+if (currentPath === '/fondeadores/') {
+  document.title = 'Aliados financieros | Grupo Principia Futuro';
+
+  const metaDescription = document.querySelector('meta[name="description"]');
+  if (metaDescription) {
+    metaDescription.setAttribute('content', 'Información institucional para aliados financieros interesados en modelos de colocación vía nómina, administración de cartera, trazabilidad operativa y colaboración financiera con GPF.');
+  }
+
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) {
+    ogTitle.setAttribute('content', 'Aliados financieros | Grupo Principia Futuro');
+  }
+
+  const ogDescription = document.querySelector('meta[property="og:description"]');
+  if (ogDescription) {
+    ogDescription.setAttribute('content', 'Información institucional para aliados financieros interesados en modelos de colocación vía nómina, administración de cartera, trazabilidad operativa y colaboración financiera con GPF.');
+  }
+
+  const hero = document.querySelector('.page-hero');
+  hero?.querySelector('.eyebrow') && (hero.querySelector('.eyebrow').textContent = 'Aliados financieros');
+  hero?.querySelector('h1') && (hero.querySelector('h1').innerHTML = 'Alianzas financieras para modelos de colocación <span>respaldados por convenios.</span>');
+  hero?.querySelector('.lead') && (hero.querySelector('.lead').textContent = 'GPF busca construir relaciones institucionales con aliados financieros interesados en modelos de colocación vía nómina, administración de cartera, trazabilidad operativa y estructuras de colaboración sujetas a revisión legal, financiera y contractual.');
+
+  const primaryHeroCta = hero?.querySelector('.hero-actions a.btn-primary');
+  if (primaryHeroCta) {
+    primaryHeroCta.textContent = 'Explorar alianza financiera';
+  }
+
+  const heroPanel = hero?.querySelector('.hero-panel');
+  heroPanel?.setAttribute('aria-label', 'Esquema animado de relación entre GPF y aliados financieros');
+  heroPanel?.querySelector('.eyebrow') && (heroPanel.querySelector('.eyebrow').textContent = 'Red institucional');
+}
+
 function removeParagraphByExactText(text) {
   document.querySelectorAll('p').forEach((paragraph) => {
     if (paragraph.textContent.trim() === text) {
