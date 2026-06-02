@@ -46,6 +46,23 @@ if (window.location.pathname.replace(/\/$/, '') === '/convenios') {
   document.head.appendChild(cleanup);
 }
 
+if (window.location.pathname.replace(/\/$/, '') === '/quienes-somos') {
+  const ogDescription = document.querySelector('meta[property="og:description"]');
+  if (ogDescription) ogDescription.setAttribute('content', 'Conoce el enfoque institucional de GPF como SOFOM ENR mexicana: operación responsable, misión, visión, valores, convenios, aliados financieros y administración de cartera.');
+
+  document.querySelectorAll('p, li, span').forEach((node) => {
+    node.childNodes.forEach((child) => {
+      if (child.nodeType === Node.TEXT_NODE) {
+        child.nodeValue = child.nodeValue
+          .replace('personas, instituciones, aliados comerciales y fondeadores', 'personas, instituciones, aliados comerciales, aliados financieros y fondeadores institucionales')
+          .replace('personas, instituciones, aliados y fondeadores', 'personas, instituciones, aliados financieros y fondeadores institucionales')
+          .replace('Para instituciones, aliados y fondeadores', 'Para instituciones, aliados financieros y fondeadores institucionales')
+          .replace('instituciones, aliados y fondeadores', 'instituciones, aliados financieros y fondeadores institucionales');
+      }
+    });
+  });
+}
+
 if (window.location.pathname.replace(/\/$/, '') === '/contacto') {
   const metaDescription = document.querySelector('meta[name="description"]');
   if (metaDescription) metaDescription.setAttribute('content', 'Contacta a Grupo Principia Futuro para información sobre crédito de nómina, convenios institucionales, alianzas financieras o colaboración con GPF.');
