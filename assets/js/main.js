@@ -2,6 +2,28 @@ const compactStyle = document.createElement('style');
 compactStyle.textContent = `@media (min-width:981px){section{padding-top:64px;padding-bottom:64px}.hero{padding-top:84px;padding-bottom:56px}.page-hero{padding-top:84px;padding-bottom:52px}.section-head{margin-bottom:30px}}`;
 document.head.appendChild(compactStyle);
 
+const currentPath = window.location.pathname.replace(/\/+$/, '/') || '/';
+
+function removeParagraphByExactText(text) {
+  document.querySelectorAll('p').forEach((paragraph) => {
+    if (paragraph.textContent.trim() === text) {
+      paragraph.remove();
+    }
+  });
+}
+
+if (currentPath === '/quienes-somos/') {
+  removeParagraphByExactText('La identidad de GPF debe sostenerse tanto frente a personas como frente a instituciones, aliados y fondeadores.');
+}
+
+if (currentPath === '/convenios/') {
+  removeParagraphByExactText('La revisión temprana permite ordenar el alcance, la operación y la comunicación con trabajadores.');
+}
+
+if (currentPath === '/solicitar-credito/') {
+  document.querySelector('.hero-actions a.btn-secondary[href="/convenios/"]')?.remove();
+}
+
 const siteHeader = document.querySelector('header');
 const siteNav = document.querySelector('header .nav');
 const mainMenu = document.querySelector('header .menu');
