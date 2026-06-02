@@ -4,6 +4,12 @@ document.head.appendChild(compactStyle);
 
 const currentPath = window.location.pathname.replace(/\/+$/, '/') || '/';
 
+document.querySelectorAll('header .menu a[href="/fondeadores/"]').forEach((link) => {
+  if (link.textContent.trim() === 'Fondeadores') {
+    link.textContent = 'Aliados financieros';
+  }
+});
+
 function removeParagraphByExactText(text) {
   document.querySelectorAll('p').forEach((paragraph) => {
     if (paragraph.textContent.trim() === text) {
