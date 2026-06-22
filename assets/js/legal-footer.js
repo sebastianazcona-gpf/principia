@@ -46,22 +46,23 @@ document.querySelectorAll('button, a').forEach((element) => {
   }
 });
 
-const tipoCliente = document.getElementById('tipoCliente');
-const tipoClienteLabel = document.querySelector('label[for="tipoCliente"]');
-if (tipoClienteLabel) tipoClienteLabel.textContent = 'Producto de inter\u00e9s';
-if (tipoCliente) {
-  Array.from(tipoCliente.options).forEach((option) => {
+(() => {
+  const tipoClienteField = document.getElementById('tipoCliente');
+  const tipoClienteLabel = document.querySelector('label[for="tipoCliente"]');
+  if (tipoClienteLabel) tipoClienteLabel.textContent = 'Producto de inter\u00e9s';
+  if (!tipoClienteField) return;
+  Array.from(tipoClienteField.options).forEach((option) => {
     const value = String(option.value || '').trim().toLowerCase();
     const text = String(option.textContent || '').trim().toLowerCase();
     if (value === 'trabajador' || value === 'pensionado' || text === 'trabajador' || text === 'pensionado') option.remove();
   });
-  if (!Array.from(tipoCliente.options).some((option) => option.value === 'Cr\u00e9dito de n\u00f3mina')) {
+  if (!Array.from(tipoClienteField.options).some((option) => option.value === 'Cr\u00e9dito de n\u00f3mina')) {
     const option = document.createElement('option');
     option.value = 'Cr\u00e9dito de n\u00f3mina';
     option.textContent = 'Cr\u00e9dito de n\u00f3mina';
-    tipoCliente.appendChild(option);
+    tipoClienteField.appendChild(option);
   }
-}
+})();
 
 if (window.location.pathname.replace(/\/$/, '') === '/convenios') {
   const cleanup = document.createElement('style');
