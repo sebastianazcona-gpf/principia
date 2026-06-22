@@ -50,18 +50,44 @@ document.querySelectorAll('button, a').forEach((element) => {
   const tipoClienteField = document.getElementById('tipoCliente');
   const tipoClienteLabel = document.querySelector('label[for="tipoCliente"]');
   if (tipoClienteLabel) tipoClienteLabel.textContent = 'Producto de inter\u00e9s';
-  if (!tipoClienteField) return;
-  Array.from(tipoClienteField.options).forEach((option) => {
-    const value = String(option.value || '').trim().toLowerCase();
-    const text = String(option.textContent || '').trim().toLowerCase();
-    if (value === 'trabajador' || value === 'pensionado' || text === 'trabajador' || text === 'pensionado') option.remove();
-  });
-  if (!Array.from(tipoClienteField.options).some((option) => option.value === 'Cr\u00e9dito de n\u00f3mina')) {
-    const option = document.createElement('option');
-    option.value = 'Cr\u00e9dito de n\u00f3mina';
-    option.textContent = 'Cr\u00e9dito de n\u00f3mina';
-    tipoClienteField.appendChild(option);
+  if (tipoClienteField) {
+    Array.from(tipoClienteField.options).forEach((option) => {
+      const value = String(option.value || '').trim().toLowerCase();
+      const text = String(option.textContent || '').trim().toLowerCase();
+      if (value === 'trabajador' || value === 'pensionado' || text === 'trabajador' || text === 'pensionado') option.remove();
+    });
+    if (!Array.from(tipoClienteField.options).some((option) => option.value === 'Cr\u00e9dito de n\u00f3mina')) {
+      const option = document.createElement('option');
+      option.value = 'Cr\u00e9dito de n\u00f3mina';
+      option.textContent = 'Cr\u00e9dito de n\u00f3mina';
+      tipoClienteField.appendChild(option);
+    }
   }
+
+  const interest = document.getElementById('interes');
+  const fundingOption = interest?.querySelector('option[value="Fondeo"]');
+  if (fundingOption) {
+    fundingOption.value = 'Alianza financiera';
+    fundingOption.textContent = 'Alianza financiera';
+  }
+
+  document.querySelectorAll('li').forEach((item) => {
+    if (item.textContent.trim() === 'Fondeo: contacto para aliados y fondeadores.') {
+      item.textContent = 'Alianzas financieras: contacto para instituciones o aliados interesados en explorar una posible colaboraci\u00f3n financiera con GPF.';
+    }
+  });
+
+  document.querySelectorAll('h3').forEach((heading) => {
+    if (heading.textContent.trim() === 'Fondeadores y aliados financieros') {
+      heading.textContent = 'Aliados financieros';
+    }
+  });
+
+  document.querySelectorAll('a').forEach((link) => {
+    if (link.textContent.trim() === 'Informaci\u00f3n para fondeadores') {
+      link.textContent = 'Informaci\u00f3n para aliados financieros';
+    }
+  });
 })();
 
 if (window.location.pathname.replace(/\/$/, '') === '/convenios') {
