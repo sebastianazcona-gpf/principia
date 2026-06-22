@@ -40,6 +40,29 @@ document.querySelectorAll('a[href="/fondeadores/"]').forEach((link) => {
   }
 });
 
+document.querySelectorAll('button, a').forEach((element) => {
+  if (element.textContent.trim() === 'Enviar solicitud') {
+    element.textContent = 'Solicitar informacion';
+  }
+});
+
+const tipoCliente = document.getElementById('tipoCliente');
+const tipoClienteLabel = document.querySelector('label[for="tipoCliente"]');
+if (tipoClienteLabel) tipoClienteLabel.textContent = 'Producto de interes';
+if (tipoCliente) {
+  Array.from(tipoCliente.options).forEach((option) => {
+    const value = String(option.value || '').trim().toLowerCase();
+    const text = String(option.textContent || '').trim().toLowerCase();
+    if (value === 'trabajador' || value === 'pensionado' || text === 'trabajador' || text === 'pensionado') option.remove();
+  });
+  if (!Array.from(tipoCliente.options).some((option) => option.value === 'Credito de nomina')) {
+    const option = document.createElement('option');
+    option.value = 'Credito de nomina';
+    option.textContent = 'Credito de nomina';
+    tipoCliente.appendChild(option);
+  }
+}
+
 if (window.location.pathname.replace(/\/$/, '') === '/convenios') {
   const cleanup = document.createElement('style');
   cleanup.textContent = '.convenio-map{display:none!important}';
@@ -48,7 +71,7 @@ if (window.location.pathname.replace(/\/$/, '') === '/convenios') {
 
 if (window.location.pathname.replace(/\/$/, '') === '/quienes-somos') {
   const ogDescription = document.querySelector('meta[property="og:description"]');
-  if (ogDescription) ogDescription.setAttribute('content', 'Conoce el enfoque institucional de GPF como SOFOM ENR mexicana: operación responsable, misión, visión, valores, convenios, aliados financieros y administración de cartera.');
+  if (ogDescription) ogDescription.setAttribute('content', 'Conoce el enfoque institucional de GPF como SOFOM ENR mexicana: operacion responsable, mision, vision, valores, convenios, aliados financieros y administracion de cartera.');
 
   document.querySelectorAll('p, li, span').forEach((node) => {
     node.childNodes.forEach((child) => {
@@ -65,13 +88,13 @@ if (window.location.pathname.replace(/\/$/, '') === '/quienes-somos') {
 
 if (window.location.pathname.replace(/\/$/, '') === '/contacto') {
   const metaDescription = document.querySelector('meta[name="description"]');
-  if (metaDescription) metaDescription.setAttribute('content', 'Contacta a Grupo Principia Futuro para información sobre crédito de nómina, convenios institucionales, alianzas financieras o colaboración con GPF.');
+  if (metaDescription) metaDescription.setAttribute('content', 'Contacta a Grupo Principia Futuro para informacion sobre credito de nomina, convenios institucionales, alianzas financieras o colaboracion con GPF.');
 
   const ogDescription = document.querySelector('meta[property="og:description"]');
-  if (ogDescription) ogDescription.setAttribute('content', 'Canaliza tu solicitud con GPF: orientación sobre crédito de nómina, convenios, alianzas financieras o colaboración institucional.');
+  if (ogDescription) ogDescription.setAttribute('content', 'Canaliza tu solicitud con GPF: orientacion sobre credito de nomina, convenios, alianzas financieras o colaboracion institucional.');
 
   const lead = document.querySelector('.page-hero .lead');
-  if (lead) lead.textContent = 'Utiliza esta página para solicitar información general sobre crédito de nómina, convenios institucionales, alianzas financieras o colaboración con GPF.';
+  if (lead) lead.textContent = 'Utiliza esta pagina para solicitar informacion general sobre credito de nomina, convenios institucionales, alianzas financieras o colaboracion con GPF.';
 
   const fundingOption = document.querySelector('#interes option[value="Fondeo"]');
   if (fundingOption) {
@@ -81,7 +104,7 @@ if (window.location.pathname.replace(/\/$/, '') === '/contacto') {
 
   document.querySelectorAll('.contact-side li').forEach((item) => {
     if (item.textContent.trim().startsWith('Fondeo:')) {
-      item.textContent = 'Alianzas financieras: instituciones o aliados interesados en explorar una posible colaboración financiera con GPF.';
+      item.textContent = 'Alianzas financieras: instituciones o aliados interesados en explorar una posible colaboracion financiera con GPF.';
     }
   });
 }
